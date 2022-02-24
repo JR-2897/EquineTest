@@ -36,5 +36,9 @@ public class HorseDAOTests {
 		assertNull(hDao.CreateHorse("Tonerre", -20));
 	}
 	
+	@Test
+	public void GetAllHorsesTestOk() {
+		assertNotNull(hDao.getAllHorses());
+	}
 	
 }

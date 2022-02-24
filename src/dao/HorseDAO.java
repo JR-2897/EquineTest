@@ -11,4 +11,8 @@ public class HorseDAO {
 			return null;
 		return new Horse(horseName,age);
 	}
+	
+	public List<Horse> getAllHorses(){
+		return null;
+	}
 }
