@@ -60,4 +60,15 @@ public class HorseDAOTests {
 		assertFalse(hDao.deleteHorse(h));
 	}
 	
+	@Test
+	public void increaseVictoryNbTestOk() {
+		Horse h = new Horse("Joker",5);
+		assertTrue(hDao.increaseVictoryNb(h));
+	}
+	
+	@Test
+	public void increaseVictoryNbTestWithHorseNull() {
+		assertFalse(hDao.increaseVictoryNb(null));
+	}
+	
 }
