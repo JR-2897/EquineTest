@@ -1,5 +1,6 @@
 package models;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -12,6 +13,7 @@ public class Race {
 
 	public Race(String raceName) {
 		this.raceName = raceName;
+		horseList = new ArrayList<Horse>();
 	}
 	
 	public String getRaceName() {

@@ -2,6 +2,7 @@ package dao;
 
 import java.util.List;
 
+import models.Data;
 import models.Horse;
 
 public class HorseDAO {
@@ -13,6 +14,6 @@ public class HorseDAO {
 	}
 	
 	public List<Horse> getAllHorses(){
-		return null;
+		return Data.init().getAllHorse();
 	}
 }

@@ -1,5 +1,6 @@
 package models;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Racetrack {
@@ -7,13 +8,14 @@ public class Racetrack {
 	String nameRacetrack;
 	List<Race> listRace;
 
-	private Racetrack racetrack;
+	private static Racetrack racetrack;
 	
 	private Racetrack() {
 		nameRacetrack = "Le super Hippodrome";
+		listRace = new ArrayList<Race>();
 	}
 	
-	public Racetrack initRacetrack() {
+	public static Racetrack initRacetrack() {
 		if (racetrack == null)
 		{
 			racetrack = new Racetrack();
