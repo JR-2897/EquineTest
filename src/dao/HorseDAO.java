@@ -16,4 +16,8 @@ public class HorseDAO {
 	public List<Horse> getAllHorses(){
 		return Data.init().getAllHorse();
 	}
+	
+	public boolean deleteHorse(Horse horse) {
+		return false;
+	}
 }
