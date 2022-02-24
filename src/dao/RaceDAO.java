@@ -8,6 +8,8 @@ public class RaceDAO {
 	Data data = Data.init();
 	
 	public Race createRace(String raceName) {
-		return null;
+		if(raceName == null || raceName.isEmpty())
+			return null;
+		return new Race(raceName);
 	}
 }
