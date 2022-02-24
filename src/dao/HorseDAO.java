@@ -6,6 +6,8 @@ import models.Data;
 import models.Horse;
 
 public class HorseDAO {
+	
+	Data data = Data.init();
 
 	public Horse CreateHorse(String horseName, int age) {
 		if(horseName == null || horseName.isEmpty() || age<= 0)
@@ -14,10 +16,12 @@ public class HorseDAO {
 	}
 	
 	public List<Horse> getAllHorses(){
-		return Data.init().getAllHorse();
+		return data.getAllHorse();
 	}
 	
 	public boolean deleteHorse(Horse horse) {
-		return false;
+		if(!data.getAllHorse().contains(horse))
+			return false;
+		return data.getAllHorse().remove(horse);
 	}
 }
