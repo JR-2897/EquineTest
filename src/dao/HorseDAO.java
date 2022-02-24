@@ -24,4 +24,8 @@ public class HorseDAO {
 			return false;
 		return data.getAllHorse().remove(horse);
 	}
+	
+	public boolean increaseVictoryNb(Horse horse) {
+		return false;
+	}
 }
