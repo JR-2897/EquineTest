@@ -10,6 +10,7 @@ public class Racetrack {
 	private Racetrack racetrack;
 	
 	private Racetrack() {
+		nameRacetrack = "Le super Hippodrome";
 	}
 	
 	public Racetrack initRacetrack() {
@@ -24,10 +25,6 @@ public class Racetrack {
 		return nameRacetrack;
 	}
 
-	public void setNameRacetrack(String nameRacetrack) {
-		this.nameRacetrack = nameRacetrack;
-	}
-	
 	public List<Race> getListRace() {
 		return listRace;
 	}
