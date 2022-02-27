@@ -26,6 +26,9 @@ public class HorseDAO {
 	}
 	
 	public boolean increaseVictoryNb(Horse horse) {
-		return false;
+		if(horse == null)
+			return false;
+		horse.setVictoryNb(horse.getVictoryNb() + 1);
+		return true;
 	}
 }
