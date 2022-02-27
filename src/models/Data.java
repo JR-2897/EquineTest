@@ -6,6 +6,8 @@ import java.util.List;
 public class Data {
 
 	List<Horse> allHorse;
+	List<Race> allRace;
+
 	Racetrack racetrack;
 	
 	static Data data;
@@ -13,6 +15,7 @@ public class Data {
 	private Data() {
 		allHorse = new ArrayList<Horse>();
 		racetrack = Racetrack.initRacetrack();
+		allRace = new ArrayList<Race>();
 	}
 	
 	public static Data init() {
@@ -27,6 +30,10 @@ public class Data {
 
 	public Racetrack getRacetrack() {
 		return racetrack;
+	}
+	
+	public List<Race> getAllRace() {
+		return allRace;
 	}
 	
 }
