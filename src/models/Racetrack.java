@@ -11,7 +11,7 @@ public class Racetrack {
 	private static Racetrack racetrack;
 	
 	private Racetrack() {
-		nameRacetrack = "Le super Hippodrome";
+		nameRacetrack = "ParisLongchamp";
 		listRace = new ArrayList<Race>();
 	}
 	
