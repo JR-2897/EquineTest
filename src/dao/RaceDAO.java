@@ -18,4 +18,8 @@ public class RaceDAO {
 	public List<Race> getAllRaces(){
 		return data.getAllRace();
 	}
+	
+	public boolean deleteRace(Race race) {
+		return false;
+	}
 }
