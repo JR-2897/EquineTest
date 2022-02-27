@@ -20,6 +20,8 @@ public class RaceDAO {
 	}
 	
 	public boolean deleteRace(Race race) {
-		return false;
+		if(!data.getAllRace().contains(race))
+			return false;
+		return data.getAllRace().remove(race);
 	}
 }
