@@ -6,6 +6,8 @@ import static org.junit.Assert.assertNull;
 import org.junit.jupiter.api.Test;
 
 import dao.RaceDAO;
+import models.Data;
+import models.Race;
 
 public class RaceDAOTests {
 
@@ -24,5 +26,10 @@ public class RaceDAOTests {
 	@Test
 	public void createRaceTestWithRaceNameEmpty() {
 		assertNull(rDao.createRace(""));
+	}
+	
+	@Test
+	public void getAllRacesTestOk() {
+		assertNotNull(rDao.getAllRaces());
 	}
 }

@@ -1,5 +1,7 @@
 package dao;
 
+import java.util.List;
+
 import models.Data;
 import models.Race;
 
@@ -11,5 +13,9 @@ public class RaceDAO {
 		if(raceName == null || raceName.isEmpty())
 			return null;
 		return new Race(raceName);
+	}
+	
+	public List<Race> getAllRaces(){
+		return null;
 	}
 }

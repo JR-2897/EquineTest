@@ -6,6 +6,8 @@ import java.util.List;
 public class Data {
 
 	List<Horse> allHorse;
+	List<Race> allRace;
+
 	Racetrack racetrack;
 	
 	static Data data;
@@ -27,6 +29,10 @@ public class Data {
 
 	public Racetrack getRacetrack() {
 		return racetrack;
+	}
+	
+	public List<Race> getAllRace() {
+		return allRace;
 	}
 	
 }
