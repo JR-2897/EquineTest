@@ -15,6 +15,7 @@ public class Data {
 	private Data() {
 		allHorse = new ArrayList<Horse>();
 		racetrack = Racetrack.initRacetrack();
+		allRace = new ArrayList<Race>();
 	}
 	
 	public static Data init() {

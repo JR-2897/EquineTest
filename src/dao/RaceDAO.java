@@ -16,6 +16,6 @@ public class RaceDAO {
 	}
 	
 	public List<Race> getAllRaces(){
-		return null;
+		return data.getAllRace();
 	}
 }
