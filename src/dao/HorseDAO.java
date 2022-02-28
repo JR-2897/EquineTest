@@ -35,6 +35,12 @@ public class HorseDAO {
 	}
 	
 	public Horse getHorseByName(String name) {
+		if(name == null || name.isEmpty())
+			return null;
+		for(Horse h : data.getAllHorse()) {
+			if(h.getNameHorse().equals(name))
+				return h;
+		}
 		return null;
 	}
 }
