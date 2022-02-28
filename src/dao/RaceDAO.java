@@ -27,6 +27,12 @@ public class RaceDAO {
 	}
 	
 	public boolean addHorseInRace(Race race, Horse horse ) {
-		return false;
+		try {
+			if(horse == null)
+				throw new NullPointerException();
+			return race.getHorseList().add(horse);
+		}catch(NullPointerException e) {
+			return false;
+		}
 	}
 }
