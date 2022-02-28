@@ -45,4 +45,12 @@ public class RaceDAO {
 			return null;
 		}
 	}
+	
+	public Race getRaceByName(String name) {
+		return null;
+	}
+	
+	public Horse getHorseInRaceByHorseName(Race r, String nameHorse) {
+		return null;
+	}
 }
