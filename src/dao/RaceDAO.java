@@ -35,4 +35,8 @@ public class RaceDAO {
 			return false;
 		}
 	}
+	
+	public List<Horse> getAllHorsesFromRace(Race race) {
+		return null;
+	}
 }

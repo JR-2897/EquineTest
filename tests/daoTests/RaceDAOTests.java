@@ -18,6 +18,7 @@ public class RaceDAOTests {
 	
 	Data data = Data.init();
 	
+	// createRace tests
 	@Test
 	public void createRaceTestOk() {
 		assertNotNull(rDao.createRace("Course du printemps"));
@@ -32,12 +33,14 @@ public class RaceDAOTests {
 	public void createRaceTestWithRaceNameEmpty() {
 		assertNull(rDao.createRace(""));
 	}
-	
+
+	// getAllRaces tests
 	@Test
 	public void getAllRacesTestOk() {
 		assertNotNull(rDao.getAllRaces());
 	}
 	
+	// deleteRace tests
 	@Test
 	public void deleteRaceTestOk() {
 		Race race = new Race("Course Semaine 1");
@@ -56,6 +59,7 @@ public class RaceDAOTests {
 		assertFalse(rDao.deleteRace(race));
 	}
 	
+	// addHorseInRace tests
 	@Test
 	public void addHorseInRaceTestOk() {
 		Horse h = new Horse("Tonnerre", 6);
@@ -73,5 +77,14 @@ public class RaceDAOTests {
 	public void addHorseInRaceTestWithRaceNull() {
 		Horse h = new Horse("Tonnerre", 6);
 		assertFalse(rDao.addHorseInRace(null, h));
+	}
+	
+	// getAllHorsesFromRace tests
+	@Test
+	public void getAllHorsesFromRaceTestOk() {
+		Horse h = new Horse("Tonnerre", 6);
+		Race r = new Race("Course du mois");
+		r.getHorseList().add(h);
+		assertNotNull(rDao.getAllHorsesFromRace(r));
 	}
 }
