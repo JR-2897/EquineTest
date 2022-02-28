@@ -17,49 +17,53 @@ public class HorseDAOTests {
 	
 	Data data = Data.init();
 	
+	// createHorse tests
 	@Test
-	public void CreateHorseTestOk() {
-		assertNotNull(hDao.CreateHorse("Tonerre", 5));
+	public void createHorseTestOk() {
+		assertNotNull(hDao.createHorse("Tonerre", 5));
 	}
 	
 	@Test
-	public void CreateHorseTestWithHorseNameNull() {
-		assertNull(hDao.CreateHorse(null, 5));
+	public void createHorseTestWithHorseNameNull() {
+		assertNull(hDao.createHorse(null, 5));
 	}
 	
 	@Test
-	public void CreateHorseTestWithHorseNameEmpty() {
-		assertNull(hDao.CreateHorse("", 5));
+	public void createHorseTestWithHorseNameEmpty() {
+		assertNull(hDao.createHorse("", 5));
 	}
 	
 	@Test
-	public void CreateHorseTestWithZeroAge() {
-		assertNull(hDao.CreateHorse("Tonerre", 0));
+	public void createHorseTestWithZeroAge() {
+		assertNull(hDao.createHorse("Tonerre", 0));
 	}
 	
 	@Test
-	public void CreateHorseTestWithNegativeAge() {
-		assertNull(hDao.CreateHorse("Tonerre", -20));
+	public void createHorseTestWithNegativeAge() {
+		assertNull(hDao.createHorse("Tonerre", -20));
 	}
 	
+	// getAllHorses tests
 	@Test
-	public void GetAllHorsesTestOk() {
+	public void getAllHorsesTestOk() {
 		assertNotNull(hDao.getAllHorses());
 	}
 	
+	// deleteHorse tests
 	@Test
-	public void DeleteHorseTestOk() {
+	public void deleteHorseTestOk() {
 		Horse h = new Horse("Joker",5);
 		data.getAllHorse().add(h);
 		assertTrue(hDao.deleteHorse(h));
 	}
 	
 	@Test
-	public void DeleteHorseTestWithHorseDontExist() {
+	public void deleteHorseTestWithHorseDontExist() {
 		Horse h = new Horse("Joker",5);
 		assertFalse(hDao.deleteHorse(h));
 	}
 	
+	// increaseVictoryNb tests
 	@Test
 	public void increaseVictoryNbTestOk() {
 		Horse h = new Horse("Joker",5);
@@ -71,4 +75,30 @@ public class HorseDAOTests {
 		assertFalse(hDao.increaseVictoryNb(null));
 	}
 	
+	
+	// getHorseByName tests
+	@Test
+	public void getHorseByNameTestOk() {
+		String name = "Junior";
+		Horse horse = new Horse(name, 5);
+		data.getAllHorse().add(horse);
+		assertNotNull(hDao.getHorseByName(name));
+	}
+	
+	@Test
+	public void getHorseByNameTestWithHorseNameDontExist() {
+		String name = "Junior";
+		assertNull(hDao.getHorseByName(name));
+	}
+	
+	@Test
+	public void getHorseByNameTestWithHorseNameEmpty() {
+		String name = "";
+		assertNull(hDao.getHorseByName(name));
+	}
+	
+	@Test
+	public void getHorseByNameTestWithHorseNameNull() {
+		assertNull(hDao.getHorseByName(null));
+	}
 }

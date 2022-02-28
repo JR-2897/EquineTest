@@ -9,7 +9,7 @@ public class HorseDAO {
 	
 	Data data = Data.init();
 
-	public Horse CreateHorse(String horseName, int age) {
+	public Horse createHorse(String horseName, int age) {
 		if(horseName == null || horseName.isEmpty() || age<= 0)
 			return null;
 		Horse horse = new Horse(horseName,age);
@@ -32,5 +32,9 @@ public class HorseDAO {
 			return false;
 		horse.setVictoryNb(horse.getVictoryNb() + 1);
 		return true;
+	}
+	
+	public Horse getHorseByName(String name) {
+		return null;
 	}
 }
