@@ -87,4 +87,9 @@ public class RaceDAOTests {
 		r.getHorseList().add(h);
 		assertNotNull(rDao.getAllHorsesFromRace(r));
 	}
+	
+	@Test
+	public void getAllHorsesFromRaceTestWithRaceNull() {
+		assertNull(rDao.getAllHorsesFromRace(null));
+	}
 }

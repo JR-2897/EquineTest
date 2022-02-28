@@ -39,6 +39,10 @@ public class RaceDAO {
 	}
 	
 	public List<Horse> getAllHorsesFromRace(Race race) {
-		return null;
+		try {
+			return race.getHorseList();
+		}catch(NullPointerException e) {
+			return null;
+		}
 	}
 }
