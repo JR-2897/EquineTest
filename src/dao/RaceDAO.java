@@ -47,10 +47,24 @@ public class RaceDAO {
 	}
 	
 	public Race getRaceByName(String name) {
+		if(name == null || name.isEmpty())
+			return null;
+		for(Race r : data.getAllRace()) {
+			if(r.getRaceName().equals(name))
+				return r;
+		}
 		return null;
 	}
 	
 	public Horse getHorseInRaceByHorseName(Race r, String nameHorse) {
+		if(nameHorse == null || nameHorse.isEmpty())
+			return null;
+		try {
+			for(Horse h : r.getHorseList()) {
+				if(h.getNameHorse().equals(nameHorse))
+					return h;
+			}
+		}catch(NullPointerException ex) {}
 		return null;
 	}
 }

@@ -105,7 +105,7 @@ public class RaceDAOTests {
 	@Test
 	public void getRaceByNameTestWithRaceNameDontExist() {
 		String name = "Course du lundi";
-		assertNotNull(rDao.getRaceByName(name));
+		assertNull(rDao.getRaceByName(name));
 	}
 	
 	@Test
@@ -141,18 +141,18 @@ public class RaceDAOTests {
 	public void getHorseInRaceByHorseNameTestWithHorseNameEmpty() {
 		String name = "";
 		Race r = new Race("Course mensuelle");
-		assertNotNull(rDao.getHorseInRaceByHorseName(r, name));
+		assertNull(rDao.getHorseInRaceByHorseName(r, name));
 	}
 	
 	@Test
 	public void getHorseInRaceByHorseNameTestWithHorseNameNull() {
 		Race r = new Race("Course mensuelle");
-		assertNotNull(rDao.getHorseInRaceByHorseName(r, null));
+		assertNull(rDao.getHorseInRaceByHorseName(r, null));
 	}
 	
 	@Test
 	public void getHorseInRaceByHorseNameTestWithRaceNull() {
 		String name = "Jojo";
-		assertNotNull(rDao.getHorseInRaceByHorseName(null, name));
+		assertNull(rDao.getHorseInRaceByHorseName(null, name));
 	}
 }
