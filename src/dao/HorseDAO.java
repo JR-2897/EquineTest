@@ -12,7 +12,9 @@ public class HorseDAO {
 	public Horse CreateHorse(String horseName, int age) {
 		if(horseName == null || horseName.isEmpty() || age<= 0)
 			return null;
-		return new Horse(horseName,age);
+		Horse horse = new Horse(horseName,age);
+		data.getAllHorse().add(horse);
+		return horse;
 	}
 	
 	public List<Horse> getAllHorses(){

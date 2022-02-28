@@ -13,7 +13,9 @@ public class RaceDAO {
 	public Race createRace(String raceName) {
 		if(raceName == null || raceName.isEmpty())
 			return null;
-		return new Race(raceName);
+		Race race = new Race(raceName);
+		data.getAllRace().add(race);
+		return race;
 	}
 	
 	public List<Race> getAllRaces(){
