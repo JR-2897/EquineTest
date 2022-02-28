@@ -3,6 +3,7 @@ package dao;
 import java.util.List;
 
 import models.Data;
+import models.Horse;
 import models.Race;
 
 public class RaceDAO {
@@ -23,5 +24,9 @@ public class RaceDAO {
 		if(!data.getAllRace().contains(race))
 			return false;
 		return data.getAllRace().remove(race);
+	}
+	
+	public boolean addHorseInRace(Race race, Horse horse ) {
+		return false;
 	}
 }

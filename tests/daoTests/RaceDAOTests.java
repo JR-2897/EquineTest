@@ -9,6 +9,7 @@ import org.junit.jupiter.api.Test;
 
 import dao.RaceDAO;
 import models.Data;
+import models.Horse;
 import models.Race;
 
 public class RaceDAOTests {
@@ -53,5 +54,24 @@ public class RaceDAOTests {
 	public void deleteRaceTestWithRaceDontExist() {
 		Race race = new Race("Course Semaine 1");
 		assertFalse(rDao.deleteRace(race));
+	}
+	
+	@Test
+	public void addHorseInRaceTestOk() {
+		Horse h = new Horse("Tonnerre", 6);
+		Race r = new Race("Course du mois");
+		assertTrue(rDao.addHorseInRace(r, h));
+	}
+	
+	@Test
+	public void addHorseInRaceTestWithHorseNull() {
+		Race r = new Race("Course du mois");
+		assertFalse(rDao.addHorseInRace(r, null));
+	}
+	
+	@Test
+	public void addHorseInRaceTestWithRaceNull() {
+		Horse h = new Horse("Tonnerre", 6);
+		assertFalse(rDao.addHorseInRace(null, h));
 	}
 }
