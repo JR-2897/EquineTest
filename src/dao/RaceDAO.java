@@ -68,7 +68,13 @@ public class RaceDAO {
 		return null;
 	}
 	
-	public boolean raceNotExist(String name) {
+	public boolean raceExist(String name) {
+		if(name == null || name.isEmpty())
+			return false;
+		for(Race r : data.getAllRace()) {
+			if(r.getRaceName().equals(name))
+				return true;
+		}
 		return false;
 	}
 }

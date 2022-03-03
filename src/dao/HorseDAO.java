@@ -44,7 +44,13 @@ public class HorseDAO {
 		return null;
 	}
 	
-	public boolean horseNotExist(String name) {
+	public boolean horseExist(String name) {
+		if(name == null || name.isEmpty())
+			return false;
+		for(Horse h : data.getAllHorse()) {
+			if(h.getNameHorse().equals(name))
+				return true;
+		}
 		return false;
 	}
 }

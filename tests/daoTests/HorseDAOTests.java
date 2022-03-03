@@ -107,7 +107,7 @@ public class HorseDAOTests {
 		String name = "Flash";
 		Horse h = new Horse(name,6);
 		data.getAllHorse().add(h);
-		assertFalse(hDao.horseNotExist(name));
+		assertTrue(hDao.horseExist(name));
 	}
 	
 	@Test
@@ -115,12 +115,12 @@ public class HorseDAOTests {
 		String name = "Flash";
 		Horse h = new Horse("Gargouille",6);
 		data.getAllHorse().add(h);
-		assertTrue(hDao.horseNotExist(name));
+		assertFalse(hDao.horseExist(name));
 	}
 	
 	@Test
 	public void horseNotExistTestWithNameNull() {
-		assertFalse(hDao.horseNotExist(null));
+		assertFalse(hDao.horseExist(null));
 	}
 	
 	@Test
@@ -128,6 +128,6 @@ public class HorseDAOTests {
 		String name = "";
 		Horse h = new Horse("",6);
 		data.getAllHorse().add(h);
-		assertFalse(hDao.horseNotExist(name));
+		assertFalse(hDao.horseExist(name));
 	}
 }
