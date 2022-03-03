@@ -1,12 +1,17 @@
 package controllers;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import dao.HorseDAO;
+import models.Data;
 import models.Horse;
 
 public class HorseController {
 	
-	public List<Horse> getAllHorses() {
+	HorseDAO hDAO = new HorseDAO();
+	
+	public String getAllHorses() {
 		return null;
 	}
 

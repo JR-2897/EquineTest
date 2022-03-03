@@ -1,6 +1,6 @@
 package controllersTests;
 
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.jupiter.api.Test;
 
@@ -15,7 +15,7 @@ public class HorseControllerTests {
 	
 	@Test
 	public void getAllHorsesOk() {
-		assertNotNull(hCtontroller.getAllHorses());
+		assertTrue(hCtontroller.getAllHorses() == "OK");
 	}
 
 }
