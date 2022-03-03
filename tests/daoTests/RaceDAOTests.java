@@ -155,4 +155,33 @@ public class RaceDAOTests {
 		String name = "Jojo";
 		assertNull(rDao.getHorseInRaceByHorseName(null, name));
 	}
+	
+	@Test
+	public void raceNotExistTestWithRaceExist() {
+		String name = "Course hebdo";
+		Race r = new Race(name);
+		data.getAllRace().add(r);
+		assertFalse(rDao.raceNotExist(name));
+	}
+	
+	@Test
+	public void raceNotExistTestWithRaceNotExist() {
+		String name = "Course 1";
+		Race r = new Race("Course quotidienne");
+		data.getAllRace().add(r);
+		assertTrue(rDao.raceNotExist(name));
+	}
+	
+	@Test
+	public void horseNotExistTestWithNameNull() {
+		assertFalse(rDao.raceNotExist(null));
+	}
+	
+	@Test
+	public void raceNotExistTestWithNameEmpty() {
+		String name = "";
+		Race r = new Race("");
+		data.getAllRace().add(r);
+		assertFalse(rDao.raceNotExist(name));
+	}
 }

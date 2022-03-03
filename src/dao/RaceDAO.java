@@ -67,4 +67,8 @@ public class RaceDAO {
 		}catch(NullPointerException ex) {}
 		return null;
 	}
+	
+	public boolean raceNotExist(String name) {
+		return false;
+	}
 }
