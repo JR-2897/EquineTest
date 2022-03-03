@@ -12,7 +12,9 @@ public class HorseController {
 	HorseDAO hDAO = new HorseDAO();
 	
 	public String getAllHorses() {
-		return null;
+		if (hDAO.getAllHorses() != null)
+			return "OK";
+		return "KO";
 	}
 
 }
