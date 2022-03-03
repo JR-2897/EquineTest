@@ -161,7 +161,7 @@ public class RaceDAOTests {
 		String name = "Course hebdo";
 		Race r = new Race(name);
 		data.getAllRace().add(r);
-		assertFalse(rDao.raceNotExist(name));
+		assertTrue(rDao.raceExist(name));
 	}
 	
 	@Test
@@ -169,12 +169,12 @@ public class RaceDAOTests {
 		String name = "Course 1";
 		Race r = new Race("Course quotidienne");
 		data.getAllRace().add(r);
-		assertTrue(rDao.raceNotExist(name));
+		assertFalse(rDao.raceExist(name));
 	}
 	
 	@Test
 	public void horseNotExistTestWithNameNull() {
-		assertFalse(rDao.raceNotExist(null));
+		assertFalse(rDao.raceExist(null));
 	}
 	
 	@Test
@@ -182,6 +182,6 @@ public class RaceDAOTests {
 		String name = "";
 		Race r = new Race("");
 		data.getAllRace().add(r);
-		assertFalse(rDao.raceNotExist(name));
+		assertFalse(rDao.raceExist(name));
 	}
 }
