@@ -43,4 +43,8 @@ public class HorseDAO {
 		}
 		return null;
 	}
+	
+	public boolean horseNotExist(String name) {
+		return false;
+	}
 }
