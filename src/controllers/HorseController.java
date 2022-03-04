@@ -12,9 +12,14 @@ public class HorseController {
 	HorseDAO hDAO = new HorseDAO();
 	
 	public String getAllHorses() {
-		if (hDAO.getAllHorses() != null)
-			return "OK";
-		return "KO";
+		List<Horse> horseList = hDAO.getAllHorses();
+		if (horseList == null)
+			return "KO";
+		for(Horse horseToPrint : horseList)
+		{
+			System.out.println("- " + horseToPrint.getNameHorse());
+		}
+		return "OK";
 	}
 	
 	public String createHorse(String name, int age) {
