@@ -17,7 +17,7 @@ public class HorseControllerTests {
 	
 	@Test
 	public void getAllHorsesOk() {
-		assertNotNull(hCtontroller.getAllHorses());
+		assertTrue(hCtontroller.getAllHorses() == "OK");
 	}
 	
 	@Test
