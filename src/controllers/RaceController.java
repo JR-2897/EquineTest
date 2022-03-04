@@ -26,4 +26,8 @@ public class RaceController {
 			return "La création de la course n'a pas pu être faite";
 		return "OK";
 	}
+	
+	public String deleteHorse(String raceName, String horseName) {
+		return "KO";
+	}
 }
