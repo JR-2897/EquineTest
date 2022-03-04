@@ -56,4 +56,17 @@ public class HorseControllerTests {
 		assertTrue(hCtontroller.createHorse(name, age).equals("La création du cheval n'a pas pu être faite"));
 	}
 
+	@Test
+	public void showInfoHorseOK() {
+		String name = "Toto3";
+		int age = 7;
+		hCtontroller.createHorse(name, age);
+		assertTrue(hCtontroller.showInfoHorse(name).equals("OK"));
+	}
+	
+	@Test
+	public void showInfoHorseKO() {
+		String name = "Toto4";
+		assertTrue(hCtontroller.showInfoHorse(name).equals("KO"));
+	}
 }

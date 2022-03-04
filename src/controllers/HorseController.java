@@ -30,5 +30,9 @@ public class HorseController {
 			return "ok";
 		return "La création du cheval n'a pas pu être faite";
 	}
+	
+	public String showInfoHorse(String name) {
+		return "KO";
+	}
 
 }

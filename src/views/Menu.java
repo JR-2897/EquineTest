@@ -1,9 +1,14 @@
 package views;
 
+import controllers.HorseController;
+import controllers.RaceController;
 import models.Racetrack;
 import utils.Util;
 
 public class Menu {
+	
+	HorseController hController = new HorseController();
+	RaceController rController = new RaceController();
 
 	public void bonjour() {
 		System.out.println("Administrateur de l hippodrome : " + Racetrack.initRacetrack().getNameRacetrack());
@@ -34,10 +39,10 @@ public class Menu {
 
 		switch (Util.saisieString()) {
 		case "1":
-			System.out.println("N est pas encore implente");
+			rController.printAllRaces();
 			break;
 		case "2":
-			System.out.println("N est pas encore implente");
+			hController.getAllHorses();
 			break;
 		case "3":
 			System.out.println("N est pas encore implente");
