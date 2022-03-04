@@ -32,7 +32,13 @@ public class HorseController {
 	}
 	
 	public String showInfoHorse(String name) {
-		return "KO";
+		Horse horseFind = hDAO.getHorseByName(name);
+		if(horseFind == null)
+			return "Ce cheval n'existe pas";
+		System.out.println("Nom du cheval : " + horseFind.getNameHorse());
+		System.out.println("Age du cheval : " + horseFind.getAge());
+		System.out.println("Nombre de victoire du cheval : " + horseFind.getVictoryNb());
+		return "OK";
 	}
 
 }
