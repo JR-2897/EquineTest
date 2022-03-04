@@ -18,7 +18,12 @@ public class HorseController {
 	}
 	
 	public String createHorse(String name, int age) {
-		return "echec";
+		if(hDAO.horseExist(name))
+			return "Le nom du cheval existe déjà";
+		Horse horseToCreate = hDAO.createHorse(name, age);
+		if(horseToCreate != null)
+			return "ok";
+		return "La création du cheval n'a pas pu être faite";
 	}
 
 }
