@@ -67,6 +67,6 @@ public class HorseControllerTests {
 	@Test
 	public void showInfoHorseKO() {
 		String name = "Toto4";
-		assertTrue(hCtontroller.showInfoHorse(name).equals("KO"));
+		assertTrue(hCtontroller.showInfoHorse(name).equals("Ce cheval n'existe pas"));
 	}
 }
