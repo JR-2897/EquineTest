@@ -18,4 +18,8 @@ public class RaceController {
 		}
 		return "OK";
 	}
+	
+	public String createRace(String name) {
+		return "echec";
+	}
 }
