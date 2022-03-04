@@ -51,7 +51,7 @@ public class HorseControllerTests {
 	
 	@Test
 	public void createHorseTestWithAgeHasZero() {
-		String name = "Toto";
+		String name = "Toto2";
 		int age = 0;
 		assertTrue(hCtontroller.createHorse(name, age).equals("La création du cheval n'a pas pu être faite"));
 	}
