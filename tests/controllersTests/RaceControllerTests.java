@@ -15,6 +15,6 @@ public class RaceControllerTests {
 	
 	@Test
 	public void printAllRaceTestOk() {
-		assertTrue(rCrt.printAllRaces().equals("ok"));
+		assertTrue(rCrt.printAllRaces().equals("OK"));
 	}
 }
