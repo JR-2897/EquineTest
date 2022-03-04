@@ -27,7 +27,7 @@ public class RaceControllerTests {
 	
 	@Test
 	public void createRaceTestWithRaceNameAlReadyExist() {
-		String name = "Course du mardi";
+		String name = "Course du mercredi";
 		data.getAllRace().add(new Race(name));
 		assertTrue(rCrt.createRace(name).equals("Le nom de la course existe déjà"));
 	}

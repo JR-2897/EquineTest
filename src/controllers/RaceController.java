@@ -20,6 +20,10 @@ public class RaceController {
 	}
 	
 	public String createRace(String name) {
-		return "echec";
+		if(rDao.raceExist(name))
+			return "Le nom de la course existe déjà";
+		if(rDao.createRace(name) == null)
+			return "La création de la course n'a pas pu être faite";
+		return "OK";
 	}
 }
