@@ -40,5 +40,9 @@ public class HorseController {
 		System.out.println("Nombre de victoire du cheval : " + horseFind.getVictoryNb());
 		return "OK";
 	}
+	
+	public String deleteHorse(String horse) {
+		return "KO";
+	}
 
 }

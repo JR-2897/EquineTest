@@ -9,6 +9,7 @@ import org.junit.jupiter.api.Test;
 import controllers.HorseController;
 import models.Data;
 import models.Horse;
+import models.Race;
 
 public class HorseControllerTests {
 	
@@ -21,11 +22,13 @@ public class HorseControllerTests {
 		data.resetData();
 	}
 	
+	// getAllHorses tests
 	@Test
 	public void getAllHorsesOk() {
 		assertTrue(hCtontroller.getAllHorses() == "OK");
 	}
 	
+	// createHorse tests
 	@Test
 	public void createHorseTestOk() {
 		String name = "Toto";
@@ -62,6 +65,7 @@ public class HorseControllerTests {
 		assertTrue(hCtontroller.createHorse(name, age).equals("La création du cheval n'a pas pu être faite"));
 	}
 
+	// showInfoHorse tests
 	@Test
 	public void showInfoHorseOK() {
 		String name = "Toto3";
@@ -74,5 +78,45 @@ public class HorseControllerTests {
 	public void showInfoHorseKO() {
 		String name = "Toto4";
 		assertTrue(hCtontroller.showInfoHorse(name).equals("Ce cheval n'existe pas"));
+	}
+	
+	// deleteHorse tests
+	@Test 
+	public void deleteHorseTestOk() {
+		String horseName = "Babby";
+		Horse h = new Horse(horseName,7);
+		data.getAllHorse().add(h);
+		assertTrue(hCtontroller.deleteHorse(horseName).equals("OK"));
+	}
+	
+	@Test 
+	public void deleteHorseTestHorseNotExist() {
+		String horseName = "Babby";
+		Horse h = new Horse("Pegasus",7);
+		data.getAllHorse().add(h);
+		assertTrue(hCtontroller.deleteHorse(horseName).equals("Ce cheval n'existe pas"));
+	}
+	
+	@Test 
+	public void deleteHorseTestHorseExistInRace() {
+		String horseName = "Babby";
+		Horse h = new Horse("Pegasus",7);
+		data.getAllHorse().add(h);
+		Race r = new Race("Course lunaire");
+		r.getHorseList().add(h);
+		data.getAllRace().add(r);
+		assertTrue(hCtontroller.deleteHorse(horseName).equals("Ce cheval existe dans une course, elle ne peut pas être supprimé"));
+	}
+	
+	@Test 
+	public void deleteHorseTestHorseNameIsNull() {
+		String horseName = null;
+		assertTrue(hCtontroller.deleteHorse(horseName).equals("Ce cheval n'existe pas"));
+	}
+	
+	@Test 
+	public void deleteHorseTestHorseNameIsEmpty() {
+		String horseName = "";
+		assertTrue(hCtontroller.deleteHorse(horseName).equals("Ce cheval n'existe pas"));
 	}
 }
