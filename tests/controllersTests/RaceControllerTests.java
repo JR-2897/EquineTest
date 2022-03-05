@@ -2,6 +2,7 @@ package controllersTests;
 
 import static org.junit.Assert.assertTrue;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import controllers.RaceController;
@@ -14,6 +15,12 @@ public class RaceControllerTests {
 	Data data = Data.init();
 	
 	RaceController rCrt = new RaceController();
+	
+	
+	@BeforeEach
+	public void initData() {
+		data.resetData();
+	}
 	
 	// printAllRace tests
 	

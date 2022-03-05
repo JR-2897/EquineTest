@@ -3,6 +3,7 @@ package controllersTests;
 import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import controllers.HorseController;
@@ -14,6 +15,11 @@ public class HorseControllerTests {
 	HorseController hCtontroller = new HorseController();
 	
 	Data data = Data.init();
+	
+	@BeforeEach
+	public void initData() {
+		data.resetData();
+	}
 	
 	@Test
 	public void getAllHorsesOk() {

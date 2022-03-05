@@ -5,6 +5,8 @@ import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;
 
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import dao.HorseDAO;
@@ -17,6 +19,11 @@ public class HorseDAOTests {
 	HorseDAO hDao = new HorseDAO();
 	
 	Data data = Data.init();
+	
+	@BeforeEach
+	public void initData() {
+		data.resetData();
+	}
 	
 	// createHorse tests
 	@Test
@@ -169,5 +176,12 @@ public class HorseDAOTests {
 		Race r = new Race("Course olympique 3");
 		data.getAllRace().add(r);
 		assertFalse(hDao.horseExistInRace(horseName));
+	}
+	
+	@Test
+	public void createHorseTest10X() {
+		for(int i = 0;i<10;i++) {
+			createHorseTestOk();
+		}
 	}
 }

@@ -36,4 +36,8 @@ public class Data {
 		return allRace;
 	}
 	
+	public void resetData() {
+		data = new Data();
+	}
+	
 }

@@ -5,6 +5,7 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import dao.RaceDAO;
@@ -17,6 +18,11 @@ public class RaceDAOTests {
 	RaceDAO rDao= new RaceDAO();
 	
 	Data data = Data.init();
+	
+	@BeforeEach
+	public void initData() {
+		data.resetData();
+	}
 	
 	// createRace tests
 	@Test
