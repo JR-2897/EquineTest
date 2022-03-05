@@ -27,7 +27,7 @@ public class HorseController {
 			return "Le nom du cheval existe déjà";
 		Horse horseToCreate = hDAO.createHorse(name, age);
 		if(horseToCreate != null)
-			return "ok";
+			return "OK";
 		return "La création du cheval n'a pas pu être faite";
 	}
 	
@@ -46,7 +46,7 @@ public class HorseController {
 		if(h == null)
 			return "Ce cheval n'existe pas";
 		if(hDAO.horseExistInRace(horseName))
-			return "Ce cheval existe dans une course, donc elle ne peut pas être supprimé";
+			return "Ce cheval existe dans une course, donc il ne peut pas être supprimé";
 		hDAO.deleteHorse(h);
 		return "OK";
 	}
