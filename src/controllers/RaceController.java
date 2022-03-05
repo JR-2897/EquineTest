@@ -44,6 +44,12 @@ public class RaceController {
 	}
 	
 	public String printHorseListInRace(String raceName) {
-		return "KO";
+		Race r = rDao.getRaceByName(raceName);
+		if(r == null)
+			return "Cette course n'existe pas";
+		for(Horse h : r.getHorseList()) {
+			System.out.println("- "+ h.getNameHorse());
+		}
+		return "OK";
 	}
 }
