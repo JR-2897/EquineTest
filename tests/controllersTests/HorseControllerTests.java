@@ -100,12 +100,12 @@ public class HorseControllerTests {
 	@Test 
 	public void deleteHorseTestHorseExistInRace() {
 		String horseName = "Babby";
-		Horse h = new Horse("Pegasus",7);
+		Horse h = new Horse(horseName,7);
 		data.getAllHorse().add(h);
 		Race r = new Race("Course lunaire");
 		r.getHorseList().add(h);
 		data.getAllRace().add(r);
-		assertTrue(hCtontroller.deleteHorse(horseName).equals("Ce cheval existe dans une course, elle ne peut pas être supprimé"));
+		assertTrue(hCtontroller.deleteHorse(horseName).equals("Ce cheval existe dans une course, donc elle ne peut pas être supprimé"));
 	}
 	
 	@Test 

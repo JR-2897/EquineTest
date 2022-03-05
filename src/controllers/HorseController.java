@@ -41,8 +41,14 @@ public class HorseController {
 		return "OK";
 	}
 	
-	public String deleteHorse(String horse) {
-		return "KO";
+	public String deleteHorse(String horseName) {
+		Horse h = hDAO.getHorseByName(horseName);
+		if(h == null)
+			return "Ce cheval n'existe pas";
+		if(hDAO.horseExistInRace(horseName))
+			return "Ce cheval existe dans une course, donc elle ne peut pas être supprimé";
+		hDAO.deleteHorse(h);
+		return "OK";
 	}
 
 }
