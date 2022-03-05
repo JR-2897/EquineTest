@@ -15,10 +15,14 @@ public class RaceControllerTests {
 	
 	RaceController rCrt = new RaceController();
 	
+	// printAllRace tests
+	
 	@Test
 	public void printAllRaceTestOk() {
 		assertTrue(rCrt.printAllRaces().equals("OK"));
 	}
+	
+	// createRace tests
 	
 	@Test
 	public void createRaceTestOk() {
@@ -45,8 +49,9 @@ public class RaceControllerTests {
 		assertTrue(rCrt.createRace(name).equals("La création de la course n'a pas pu être faite"));
 	}
 	
+	// deleteHorseInRace tests
 	@Test
-	public void deleteRaceTestOk() {
+	public void deleteHorseInRaceTestOk() {
 		String raceName = "Course de Mars v1";
 		String horseName = "Bobby";
 		Horse h = new Horse(horseName,7);
@@ -54,72 +59,72 @@ public class RaceControllerTests {
 		Race r = new Race(raceName);
 		r.getHorseList().add(h);
 		data.getAllRace().add(r);
-		assertTrue(rCrt.deleteHorse(raceName, horseName).equals("OK"));
+		assertTrue(rCrt.deleteHorseInRace(raceName, horseName).equals("OK"));
 	}
 	
 	@Test
-	public void deleteRaceTestWithRaceNotExist() {
+	public void deleteHorseInRaceTestWithRaceNotExist() {
 		String raceName = "Course de Mars v2";
 		String horseName = "Babby";
 		Horse h = new Horse(horseName,7);
 		data.getAllHorse().add(h);
 		Race r = new Race(raceName);
 		r.getHorseList().add(h);
-		assertTrue(rCrt.deleteHorse(raceName, horseName).equals("La course n'existe pas"));
+		assertTrue(rCrt.deleteHorseInRace(raceName, horseName).equals("La course n'existe pas"));
 	}
 	
 	@Test
-	public void deleteRaceTestWithHorseNotExist() {
+	public void deleteHorseInRaceTestWithHorseNotExist() {
 		String raceName = "Course de Mars v3";
 		String horseName = "Bibby";
 		Horse h = new Horse(horseName,7);
 		Race r = new Race(raceName);
 		r.getHorseList().add(h);
 		data.getAllRace().add(r);
-		assertTrue(rCrt.deleteHorse(raceName, horseName).equals("Le cheval n'existe pas"));
+		assertTrue(rCrt.deleteHorseInRace(raceName, horseName).equals("Le cheval n'existe pas"));
 	}
 	
 	@Test
-	public void deleteRaceTestWithHorseNotExistInRace() {
+	public void deleteHorseInRaceTestWithHorseNotExistInRace() {
 		String raceName = "Course de Mars v4";
 		String horseName = "Bubby";
 		Horse h = new Horse(horseName,7);
 		data.getAllHorse().add(h);
 		Race r = new Race(raceName);
 		data.getAllRace().add(r);
-		assertTrue(rCrt.deleteHorse(raceName, horseName).equals("Le cheval n'existe pas dans cette course"));
+		assertTrue(rCrt.deleteHorseInRace(raceName, horseName).equals("Le cheval n'existe pas dans cette course"));
 	}
 	
 	@Test
-	public void deleteRaceTestWithHorseNameNull() {
+	public void deleteHorseInRaceTestWithHorseNameNull() {
 		String raceName = "Course de Mars v4";
 		String horseName = null;
-		assertTrue(rCrt.deleteHorse(raceName, horseName).equals("Le cheval n'existe pas"));
+		assertTrue(rCrt.deleteHorseInRace(raceName, horseName).equals("Le cheval n'existe pas"));
 	}
 	
 	@Test
-	public void deleteRaceTestWithHorseNameEmpty() {
+	public void deleteHorseInRaceTestWithHorseNameEmpty() {
 		String raceName = "Course de Mars v4";
 		String horseName = "";
-		assertTrue(rCrt.deleteHorse(raceName, horseName).equals("Le cheval n'existe pas"));
+		assertTrue(rCrt.deleteHorseInRace(raceName, horseName).equals("Le cheval n'existe pas"));
 	}
 	
 	@Test
-	public void deleteRaceTestWithRaceNameNull() {
+	public void deleteHorseInRaceTestWithRaceNameNull() {
 		String raceName = null;
 		String horseName = "Tenor 1";
 		Horse h = new Horse(horseName,7);
 		data.getAllHorse().add(h);
-		assertTrue(rCrt.deleteHorse(raceName, horseName).equals("La course n'existe pas"));
+		assertTrue(rCrt.deleteHorseInRace(raceName, horseName).equals("La course n'existe pas"));
 	}
 	
 	@Test
-	public void deleteRaceTestWithRaceNameEmpty() {
+	public void deleteHorseInRaceTestWithRaceNameEmpty() {
 		String raceName = "";
 		String horseName = "Tenor 2";
 		Horse h = new Horse(horseName,7);
 		data.getAllHorse().add(h);
-		assertTrue(rCrt.deleteHorse(raceName, horseName).equals("La course n'existe pas"));
+		assertTrue(rCrt.deleteHorseInRace(raceName, horseName).equals("La course n'existe pas"));
 	}
 	
 	

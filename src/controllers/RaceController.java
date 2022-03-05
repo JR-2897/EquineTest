@@ -2,12 +2,15 @@ package controllers;
 
 import java.util.List;
 
+import dao.HorseDAO;
 import dao.RaceDAO;
+import models.Horse;
 import models.Race;
 
 public class RaceController {
 
 	RaceDAO rDao = new RaceDAO();
+	HorseDAO hDao = new HorseDAO();
 	
 	public String printAllRaces() {
 		List<Race> raceList = rDao.getAllRaces();
@@ -27,7 +30,16 @@ public class RaceController {
 		return "OK";
 	}
 	
-	public String deleteHorse(String raceName, String horseName) {
-		return "KO";
+	public String deleteHorseInRace(String raceName, String horseName) {
+		if(!hDao.horseExist(horseName))
+			return "Le cheval n'existe pas";
+		if(!rDao.raceExist(raceName))
+			return "La course n'existe pas";
+		Race r = rDao.getRaceByName(raceName);
+		Horse h = rDao.getHorseInRaceByHorseName(r, horseName);
+		if(h == null)
+			return "Le cheval n'existe pas dans cette course";
+		rDao.deleteHorseInRace(r,h);
+		return "OK";
 	}
 }
