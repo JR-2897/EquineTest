@@ -4,6 +4,7 @@ import java.util.List;
 
 import models.Data;
 import models.Horse;
+import models.Race;
 
 public class HorseDAO {
 	
@@ -55,6 +56,14 @@ public class HorseDAO {
 	}
 	
 	public boolean horseExistInRace(String nameHorse) {
+		if(nameHorse == null || nameHorse.equals(""))
+			return false;
+		for(Race r : data.getAllRace()) {
+			for(Horse h : r.getHorseList()) {
+				if(h.getNameHorse().equals(nameHorse))
+					return true;
+			}
+		}
 		return false;
 	}
 }
