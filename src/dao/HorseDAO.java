@@ -53,4 +53,8 @@ public class HorseDAO {
 		}
 		return false;
 	}
+	
+	public boolean horseExistInRace(String nameHorse) {
+		return false;
+	}
 }

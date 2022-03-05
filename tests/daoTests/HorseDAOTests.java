@@ -10,6 +10,7 @@ import org.junit.jupiter.api.Test;
 import dao.HorseDAO;
 import models.Data;
 import models.Horse;
+import models.Race;
 
 public class HorseDAOTests {
 
@@ -102,8 +103,9 @@ public class HorseDAOTests {
 		assertNull(hDao.getHorseByName(null));
 	}
 	
+	// horseExist tests
 	@Test
-	public void horseNotExistTestWithHorseExist() {
+	public void horseExistTestWithHorseExist() {
 		String name = "Flash";
 		Horse h = new Horse(name,6);
 		data.getAllHorse().add(h);
@@ -111,7 +113,7 @@ public class HorseDAOTests {
 	}
 	
 	@Test
-	public void horseNotExistTestWithHorseNotExist() {
+	public void horseExistTestWithHorseNotExist() {
 		String name = "Flash";
 		Horse h = new Horse("Gargouille",6);
 		data.getAllHorse().add(h);
@@ -119,15 +121,53 @@ public class HorseDAOTests {
 	}
 	
 	@Test
-	public void horseNotExistTestWithNameNull() {
+	public void horseExistTestWithNameNull() {
 		assertFalse(hDao.horseExist(null));
 	}
 	
 	@Test
-	public void horseNotExistTestWithNameEmpty() {
+	public void horseExistTestWithNameEmpty() {
 		String name = "";
 		Horse h = new Horse("",6);
 		data.getAllHorse().add(h);
 		assertFalse(hDao.horseExist(name));
+	}
+	
+	// horseExistInRace test
+	
+	@Test
+	public void horseExistInRaceTestOk() {
+		String horseName = "Pegase";
+		Horse h = new Horse(horseName,9);
+		Race r = new Race("Course olympique");
+		r.getHorseList().add(h);
+		data.getAllRace().add(r);
+		assertTrue(hDao.horseExistInRace(horseName));
+	}
+	
+	@Test
+	public void horseExistInRaceTestWithHorseNotExistInRace() {
+		String horseName = "Pegase 3";
+		Horse h = new Horse("Pegase 2",9);
+		Race r = new Race("Course olympique");
+		r.getHorseList().add(h);
+		data.getAllRace().add(r);
+		assertFalse(hDao.horseExistInRace(horseName));
+	}
+	
+	@Test
+	public void horseExistInRaceTestWithHorseNameIsNull() {
+		String horseName = null;
+		Race r = new Race("Course olympique 2");
+		data.getAllRace().add(r);
+		assertFalse(hDao.horseExistInRace(horseName));
+	}
+	
+	@Test
+	public void horseExistInRaceTestWithHorseNameIsEmpty() {
+		String horseName = "";
+		Race r = new Race("Course olympique 3");
+		data.getAllRace().add(r);
+		assertFalse(hDao.horseExistInRace(horseName));
 	}
 }
