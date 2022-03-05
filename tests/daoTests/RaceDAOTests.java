@@ -156,8 +156,9 @@ public class RaceDAOTests {
 		assertNull(rDao.getHorseInRaceByHorseName(null, name));
 	}
 	
+	// raceExist tests
 	@Test
-	public void raceNotExistTestWithRaceExist() {
+	public void raceExistTestWithRaceExist() {
 		String name = "Course hebdo";
 		Race r = new Race(name);
 		data.getAllRace().add(r);
@@ -165,7 +166,7 @@ public class RaceDAOTests {
 	}
 	
 	@Test
-	public void raceNotExistTestWithRaceNotExist() {
+	public void raceExistTestWithRaceNotExist() {
 		String name = "Course 1";
 		Race r = new Race("Course quotidienne");
 		data.getAllRace().add(r);
@@ -173,15 +174,50 @@ public class RaceDAOTests {
 	}
 	
 	@Test
-	public void horseNotExistTestWithNameNull() {
+	public void raceExistTestWithNameNull() {
 		assertFalse(rDao.raceExist(null));
 	}
 	
 	@Test
-	public void raceNotExistTestWithNameEmpty() {
+	public void raceExistTestWithNameEmpty() {
 		String name = "";
 		Race r = new Race("");
 		data.getAllRace().add(r);
 		assertFalse(rDao.raceExist(name));
+	}
+	
+	// deleteHorseInRace tests
+	
+	@Test
+	public void deleteHorseInRaceTestOk() {
+		String raceName = "Course de New York";
+		String horseName = "Trotro";
+		Horse h = new Horse(horseName,3);
+		Race r = new Race(raceName);
+		r.getHorseList().add(h);
+		assertTrue(rDao.deleteHorseInRace(r,h));
+	}
+	
+	@Test
+	public void deleteHorseInRaceTestHorseNotExistInRace() {
+		String raceName = "Course de New York";
+		String horseName = "Trotro 2";
+		Horse h = new Horse(horseName,3);
+		Race r = new Race(raceName);
+		assertFalse(rDao.deleteHorseInRace(r,h));
+	}
+	
+	@Test
+	public void deleteHorseInRaceTestHorseIsNull() {
+		String raceName = "Course de New York";
+		Race r = new Race(raceName);
+		assertFalse(rDao.deleteHorseInRace(r,null));
+	}
+	
+	@Test
+	public void deleteHorseInRaceTestRaceIsNull() {
+		String horseName = "Trotro 2";
+		Horse h = new Horse(horseName,3);
+		assertFalse(rDao.deleteHorseInRace(null,h));
 	}
 }

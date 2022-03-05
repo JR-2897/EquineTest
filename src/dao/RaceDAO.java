@@ -77,4 +77,8 @@ public class RaceDAO {
 		}
 		return false;
 	}
+	
+	public boolean deleteHorseInRace(Race r, Horse h) {
+		return false;
+	}
 }
