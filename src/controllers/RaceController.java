@@ -52,4 +52,8 @@ public class RaceController {
 		}
 		return "OK";
 	}
+	
+	public String addHorseInRace(Race r, String nameHorse) {
+		return "KO";
+	}
 }
