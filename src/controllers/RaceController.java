@@ -54,6 +54,14 @@ public class RaceController {
 	}
 	
 	public String addHorseInRace(Race r, String nameHorse) {
-		return "KO";
+		if(r == null)
+			return "La course n'est pas bonne";
+		Horse h = hDao.getHorseByName(nameHorse);
+		if(h == null)
+			return "Ce cheval n'existe pas";
+		if(rDao.getHorseInRaceByHorseName(r, nameHorse)!=null)
+			return "Ce cheval existe déjà dans la course";
+		rDao.addHorseInRace(r, h);
+		return "OK";
 	}
 }
