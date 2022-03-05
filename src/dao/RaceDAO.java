@@ -79,6 +79,12 @@ public class RaceDAO {
 	}
 	
 	public boolean deleteHorseInRace(Race r, Horse h) {
-		return false;
+		try {
+			if(h == null)
+				throw new NullPointerException();
+			return r.getHorseList().remove(h);
+		}catch(NullPointerException e) {
+			return false;
+		}
 	}
 }
