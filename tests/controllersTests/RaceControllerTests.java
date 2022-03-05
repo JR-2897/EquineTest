@@ -134,5 +134,35 @@ public class RaceControllerTests {
 		assertTrue(rCrt.deleteHorseInRace(raceName, horseName).equals("La course n'existe pas"));
 	}
 	
+	// printHorseListInRace tests
+	
+	@Test
+	public void printHorseListInRaceTestOk() {
+		String raceName = "Course arc-en-ciel";
+		Race r = new Race(raceName);
+		data.getAllRace().add(r);
+		assertTrue(rCrt.printHorseListInRace(raceName).equals("OK"));	
+	}
+	
+	@Test
+	public void printHorseListInRaceTestWithRaceNotExist() {
+		String raceName = "Course arc-en-ciel";
+		Race r = new Race("Course prix de l'arc de triomphe");
+		data.getAllRace().add(r);
+		assertTrue(rCrt.printHorseListInRace(raceName).equals("Cette course n'existe pas"));	
+	}
+	
+	@Test
+	public void printHorseListInRaceTestWithRaceNameIsNull() {
+		String raceName = null;
+		assertTrue(rCrt.printHorseListInRace(raceName).equals("Cette course n'existe pas"));	
+	}
+	
+	@Test
+	public void printHorseListInRaceTestWithRaceNameIsEmpty() {
+		String raceName = "";
+		assertTrue(rCrt.printHorseListInRace(raceName).equals("Cette course n'existe pas"));	
+	}
+	
 	
 }

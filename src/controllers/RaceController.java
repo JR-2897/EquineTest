@@ -42,4 +42,8 @@ public class RaceController {
 		rDao.deleteHorseInRace(r,h);
 		return "OK";
 	}
+	
+	public String printHorseListInRace(String raceName) {
+		return "KO";
+	}
 }
