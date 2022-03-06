@@ -66,4 +66,8 @@ public class RaceController {
 		rDao.addHorseInRace(r, h);
 		return "OK";
 	}
+	
+	public String launchRaceAndPrintResult(String raceName) {
+		return "KO";
+	}
 }
