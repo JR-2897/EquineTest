@@ -361,11 +361,11 @@ public class RaceControllerTests {
 		r.setWinner(new Horse("Pomme",5));
 		r.setRaceDate(LocalDate.now());
 		data.getAllRace().add(r);
-		assertTrue(rCrt.printLast10RacesLaunched().equals("Ok"));
+		assertTrue(rCrt.printLast10RacesLaunched().equals("OK"));
 	}
 	
 	@Test
 	public void printLast10RacesLaunchedTestWithNeitherRaceLaunched() {
-		assertTrue(rCrt.printLast10RacesLaunched().equals("Ok"));
+		assertTrue(rCrt.printLast10RacesLaunched().equals("OK"));
 	}
 }

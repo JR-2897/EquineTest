@@ -135,6 +135,13 @@ public class RaceController {
 	}
 	
 	public String printLast10RacesLaunched() {
-		return "KO";
+		try {
+		for(Race r : rDao.getAllRaceLaunched()) {
+			System.out.println("Course : "+r.getRaceName()+" Date: "+r.getRaceDate()+" Cheval vainqueur: "+r.getWinner().getNameHorse());
+		}
+		}catch(Exception ex) {
+			return "Il y a eu une exception";
+		}
+		return "OK";
 	}
 }
