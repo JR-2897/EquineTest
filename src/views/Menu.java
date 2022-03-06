@@ -16,7 +16,7 @@ public class Menu {
 	}
 
 	public void choix() {
-		System.out.println("-----------------------------------------------------");
+		System.out.println("---------------------------------------------------------------");
 		System.out.println("Que voulez vous faire ?");
 		System.out.println("1 Afficher la liste des courses");
 		System.out.println("2 Afficher la liste de tous les chevaux");
@@ -25,7 +25,9 @@ public class Menu {
 		System.out.println("5 Creer un nouvel cheval");
 		System.out.println("6 Supprimer une course");
 		System.out.println("7 Supprimer un cheval");
-		System.out.println("8 Ajouter des chevaux a une course");
+		System.out.println("8 Afficher les informations d une course");
+		System.out.println("9 Afficher les informations d un cheval");
+		System.out.println("10 Ajouter des chevaux a une course");
 		/*
 		 * TODO 
 		 * 1) Afficher la liste de tous les chevaux 
@@ -33,9 +35,9 @@ public class Menu {
 		 * 		a) Ajouter cheval 
 		 * 		b) Retour menu principale
 		 */
-		System.out.println("9 Lancement d une course et affichage de son resultat");
-		System.out.println("10 Afficher les dix dernieres courses lancees");
-		System.out.println("-----------------------------------------------------");
+		System.out.println("11 Lancement d une course et affichage de son resultat");
+		System.out.println("12 Afficher les dix dernieres courses lancees");
+		System.out.println("---------------------------------------------------------------");
 
 		switch (Util.saisieString()) {
 		case "1":
@@ -59,7 +61,8 @@ public class Menu {
 			waitBeforeComebackMenu();
 			break;
 		case "6":
-			System.out.println("N est pas encore implente");
+			partMenuDeleteRace();
+			waitBeforeComebackMenu();
 			break;
 		case "7":
 			partMenuDeleteHorse();
@@ -69,9 +72,16 @@ public class Menu {
 			System.out.println("N est pas encore implente");
 			break;
 		case "9":
-			System.out.println("N est pas encore implente");
+			partMenuPrintInfosHorse();
+			waitBeforeComebackMenu();
 			break;
 		case "10":
+			System.out.println("N est pas encore implente");
+			break;
+		case "11":
+			System.out.println("N est pas encore implente");
+			break;
+		case "12":
 			System.out.println("N est pas encore implente");
 			break;
 		default:
@@ -81,10 +91,10 @@ public class Menu {
 	}
 	
 	private void waitBeforeComebackMenu() {
-		System.out.println("-----------------------------------------------------");
+		System.out.println("---------------------------------------------------------------");
 		System.out.println("Pour retourner au menu principal :");
 		System.out.println("Appuyer sur 0");
-		System.out.println("-----------------------------------------------------");
+		System.out.println("---------------------------------------------------------------");
 		if(Util.saisieString() == "0")
 		{
 			int x = 0;
@@ -93,23 +103,23 @@ public class Menu {
 	
 	private void partMenuPrintAllRaces() {
 		System.out.println("Voici la liste des courses :");
-		System.out.println("-----------------------------------------------------");
+		System.out.println("---------------------------------------------------------------");
 		rController.printAllRaces();
 	}
 	
 	private void partMenuPrintAllHorses() {
 		System.out.println("Voici la liste des chevaux :");
-		System.out.println("-----------------------------------------------------");
+		System.out.println("---------------------------------------------------------------");
 		hController.getAllHorses();
 	}
 	
 	private void partMenuPrintHorseListInRace() {
 		System.out.println("Pour voir les chevaux d une course vous devez :");
 		System.out.println("Donner le nom de la course :");
-		System.out.println("-----------------------------------------------------");
+		System.out.println("---------------------------------------------------------------");
 		System.out.println("Le nom de la course :");
 		String raceName = Util.saisieString();
-		System.out.println("-----------------------------------------------------");
+		System.out.println("---------------------------------------------------------------");
 		String msgPrintHorseListInRace = rController.printHorseListInRace(raceName);
 		if(!msgPrintHorseListInRace.equals("OK"))
 			System.out.println(msgPrintHorseListInRace);
@@ -118,10 +128,10 @@ public class Menu {
 	private void partMenuCreateRace() {
 		System.out.println("Pour creer une nouvelle course vous devez :");
 		System.out.println("Lui donner un nom");
-		System.out.println("-----------------------------------------------------");
+		System.out.println("---------------------------------------------------------------");
 		System.out.println("Le nom de la course :");
 		String raceName = Util.saisieString();
-		System.out.println("-----------------------------------------------------");
+		System.out.println("---------------------------------------------------------------");
 		String msgCreateRace = rController.createRace(raceName);
 		if(!msgCreateRace.equals("OK"))
 			System.out.println(msgCreateRace);
@@ -133,13 +143,13 @@ public class Menu {
 		System.out.println("Pour creer un nouveau cheval vous devez :");
 		System.out.println("- Lui donner un nom");
 		System.out.println("- Donner son age");
-		System.out.println("-----------------------------------------------------");
+		System.out.println("---------------------------------------------------------------");
 		System.out.println("Le nom du cheval :");
 		String horseName = Util.saisieString();
-		System.out.println("-----------------------------------------------------");
+		System.out.println("---------------------------------------------------------------");
 		System.out.println("L age du cheval :");
 		int horseAge = Util.saisieInt();
-		System.out.println("-----------------------------------------------------");
+		System.out.println("---------------------------------------------------------------");
 		String msgCreateHorse = hController.createHorse(horseName, horseAge);
 		if(!msgCreateHorse.equals("OK"))
 			System.out.println(msgCreateHorse);
@@ -147,16 +157,40 @@ public class Menu {
 			System.out.println("Le cheval a bien ete cree");
 	}
 	
+	private void partMenuDeleteRace() {
+		partMenuPrintAllRaces();
+		System.out.println("---------------------------------------------------------------");
+		System.out.println("Quelle course voulez-vous supprimer ?");
+		String nameRaceToDelete = Util.saisieString();
+		System.out.println("---------------------------------------------------------------");
+		String msgDeleteRace = rController.deleteRace(nameRaceToDelete);
+		if(!msgDeleteRace.equals("OK"))
+			System.out.println(msgDeleteRace);
+		else
+			System.out.println("La course a bien ete supprime");
+	}
+	
 	private void partMenuDeleteHorse() {
 		partMenuPrintAllHorses();
-		System.out.println("-----------------------------------------------------");
+		System.out.println("---------------------------------------------------------------");
 		System.out.println("Quel cheval voulez-vous supprimer ?");
 		String nameHorseToDelete = Util.saisieString();
-		System.out.println("-----------------------------------------------------");
+		System.out.println("---------------------------------------------------------------");
 		String msgDeleteHorse = hController.deleteHorse(nameHorseToDelete);
 		if(!msgDeleteHorse.equals("OK"))
 			System.out.println(msgDeleteHorse);
 		else
 			System.out.println("Le cheval a bien ete supprime");
+	}
+	
+	private void partMenuPrintInfosHorse() {
+		partMenuPrintAllHorses();
+		System.out.println("---------------------------------------------------------------");
+		System.out.println("Quel est le cheval dont vous voulez les informations ?");
+		String nameHorseGetInfos = Util.saisieString();
+		System.out.println("---------------------------------------------------------------");
+		String msgShowHorseInfos = hController.showInfoHorse(nameHorseGetInfos);
+		if(!msgShowHorseInfos.equals("OK"))
+			System.out.println(msgShowHorseInfos);
 	}
 }
