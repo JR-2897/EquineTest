@@ -33,7 +33,7 @@ public class HorseControllerTests {
 	public void createHorseTestOk() {
 		String name = "Toto";
 		int age = 5;
-		assertTrue(hCtontroller.createHorse(name, age).equals("ok"));
+		assertTrue(hCtontroller.createHorse(name, age).equals("OK"));
 	}
 	
 	@Test
@@ -105,7 +105,7 @@ public class HorseControllerTests {
 		Race r = new Race("Course lunaire");
 		r.getHorseList().add(h);
 		data.getAllRace().add(r);
-		assertTrue(hCtontroller.deleteHorse(horseName).equals("Ce cheval existe dans une course, donc elle ne peut pas être supprimé"));
+		assertTrue(hCtontroller.deleteHorse(horseName).equals("Ce cheval existe dans une course, donc il ne peut pas être supprimé"));
 	}
 	
 	@Test 
