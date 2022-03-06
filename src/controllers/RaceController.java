@@ -57,9 +57,10 @@ public class RaceController {
 		return "OK";
 	}
 
-	public String addHorseInRace(Race r, String nameHorse) {
+	public String addHorseInRace(String nameRace, String nameHorse) {
+		Race r = rDao.getRaceByName(nameRace);
 		if (r == null)
-			return "La course n'est pas bonne";
+			return "La course n existe pas";
 		Horse h = hDao.getHorseByName(nameHorse);
 		if (h == null)
 			return "Ce cheval n'existe pas";
