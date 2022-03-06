@@ -77,4 +77,8 @@ public class RaceController {
 			return "Suppresion impossible car la course a un gagnant";
 		return "OK";
 	}
+	
+	public String showInfoRace(String nameRace) {
+		return "KO";
+	}
 }

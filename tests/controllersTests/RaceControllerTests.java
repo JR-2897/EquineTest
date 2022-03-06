@@ -277,4 +277,18 @@ public class RaceControllerTests {
 
 	}
 	
+	// showInfoRace tests
+	@Test
+	public void showInfoRaceOK() {
+		String nameRace = "Course Prix La Somme";
+		rCrt.createRace(nameRace);
+		assertTrue(rCrt.showInfoRace(nameRace).equals("OK"));
+	}
+	
+	@Test
+	public void showInfoRaceKO() {
+		String nameRace = "Course Prix Clemenceau";
+		assertTrue(rCrt.showInfoRace(nameRace).equals("Cette course n existe pas"));
+	}
+	
 }
