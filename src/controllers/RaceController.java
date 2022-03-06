@@ -1,11 +1,15 @@
 package controllers;
 
+import java.time.LocalDate;
 import java.util.List;
+
+import javax.print.attribute.standard.DateTimeAtCompleted;
 
 import dao.HorseDAO;
 import dao.RaceDAO;
 import models.Horse;
 import models.Race;
+import utils.Util;
 
 public class RaceController {
 
@@ -61,7 +65,7 @@ public class RaceController {
 			return "Ce cheval n'existe pas";
 		if(rDao.getHorseInRaceByHorseName(r, nameHorse)!=null)
 			return "Ce cheval existe déjà dans la course";
-		if(r.getHorseList().size() >= 6)
+		if(rDao.raceHasAchievedHorsesMaxCapacity(r))
 			return "La course a déjà atteint son nombre maximum de chevaux";
 		rDao.addHorseInRace(r, h);
 		return "OK";
@@ -79,5 +83,30 @@ public class RaceController {
 	}
 	
 	public String launchRaceAndPrintResult(String raceName) {
-		return "KO";
+		Race r = rDao.getRaceByName(raceName);
+		if(r == null)
+			return "La course n'existe pas";
+		if(!rDao.raceHasAchievedHorsesMaxCapacity(r))
+			return "Il faut 6 chevaux pour lancer la course. Il y en a que "+ r.getHorseList().size();
+		if(rDao.horseWinnerExist(r))
+			return "La course a déjà été lancé, elle ne peut pas être relancé";
+		Horse h = launchRace(r);
+		if(h == null)
+			return "Il y a eu un problème dans le lancement de la course";
+		System.out.println("Le gagnant pour la course "+ r.getRaceName()+ " est : "+r.getWinner().getNameHorse());
+		return "OK";
+	}
+	
+	private Horse launchRace(Race r) {
+		int winnerIndex = Util.randomInt(0, 5);
+		Horse h = null;
+		try {
+			h = r.getHorseList().get(winnerIndex);
+			r.setWinner(h);
+			hDao.increaseVictoryNb(h);
+			r.setRaceDate(LocalDate.now());
+		}catch(Exception ex) {
+		}
+		return h;
+	}
 }

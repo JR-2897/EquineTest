@@ -1,13 +1,13 @@
 package models;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class Race {
 	
 	String raceName;
-	Date raceDate;
+	LocalDate raceDate;
 	List<Horse> horseList;
 	Horse winner;
 
@@ -22,10 +22,10 @@ public class Race {
 	public void setRaceName(String raceName) {
 		this.raceName = raceName;
 	}
-	public Date getRaceDate() {
+	public LocalDate getRaceDate() {
 		return raceDate;
 	}
-	public void setRaceDate(Date raceDate) {
+	public void setRaceDate(LocalDate raceDate) {
 		this.raceDate = raceDate;
 	}
 	public List<Horse> getHorseList() {

@@ -288,7 +288,7 @@ public class RaceControllerTests {
 			r.getHorseList().add(new Horse(name,5));
 		}
 		data.getAllRace().add(r);
-		assertTrue(rCrt.launchRaceAndPrintResult(raceName).equals("Ok"));
+		assertTrue(rCrt.launchRaceAndPrintResult(raceName).equals("OK"));
 	}
 	
 	@Test
@@ -322,5 +322,18 @@ public class RaceControllerTests {
 		}
 		data.getAllRace().add(r);
 		assertTrue(rCrt.launchRaceAndPrintResult(raceName).equals("Il faut 6 chevaux pour lancer la course. Il y en a que "+ r.getHorseList().size()));
+	}
+	
+	@Test
+	public void launchRaceAndPrintResultTestWithRaceHasAlreadyLaunched() {
+		String raceName = "Course V";
+		Race r = new Race(raceName);
+		String[] listHorse = new String[] {"Pomme","Banane","Poire","Fraise","Framboise","Pêche"};
+		for(String name : listHorse) {
+			r.getHorseList().add(new Horse(name,5));
+		}
+		r.setWinner(new Horse("Pomme",5));
+		data.getAllRace().add(r);
+		assertTrue(rCrt.launchRaceAndPrintResult(raceName).equals("La course a déjà été lancé, elle ne peut pas être relancé"));
 	}
 }
