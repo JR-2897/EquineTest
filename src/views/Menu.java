@@ -79,7 +79,8 @@ public class Menu {
 			waitBeforeComebackMenu();
 			break;
 		case "12":
-			System.out.println("N est pas encore implente");
+			partMenuPrintLast10RacesLaunched();
+			waitBeforeComebackMenu();
 			break;
 		default:
 			System.out.println("Cette option n existe pas");
@@ -239,5 +240,13 @@ public class Menu {
 		String msgLaunchRaceAndPrintResult = rController.launchRaceAndPrintResult(nameRacetoLunch);
 		if(!msgLaunchRaceAndPrintResult.equals("OK"))
 			System.out.println(msgLaunchRaceAndPrintResult);
+	}
+	
+	private void partMenuPrintLast10RacesLaunched() {
+		System.out.println("---------------------------------------------------------------");
+		System.out.println("Voici la liste des dix derniere courses lancees");
+		String msgPrintLast10RacesLaunched = rController.printLast10RacesLaunched();
+		if(!msgPrintLast10RacesLaunched.equals("OK"))
+			System.out.println(msgPrintLast10RacesLaunched);
 	}
 }
