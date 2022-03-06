@@ -291,4 +291,51 @@ public class RaceControllerTests {
 		assertTrue(rCrt.showInfoRace(nameRace).equals("Cette course n existe pas"));
 	}
 	
+	// launchRaceAndPrintResult tests
+	
+	@Test
+	public void launchRaceAndPrintResultTestOk() {
+		String raceName = "Course V";
+		Race r = new Race(raceName);
+		String[] listHorse = new String[] {"Pomme","Banane","Poire","Fraise","Framboise","Pêche"};
+		for(String name : listHorse) {
+			r.getHorseList().add(new Horse(name,5));
+		}
+		data.getAllRace().add(r);
+		assertTrue(rCrt.launchRaceAndPrintResult(raceName).equals("Ok"));
+	}
+	
+	@Test
+	public void launchRaceAndPrintResultTestWithRaceNameIsEmpty() {
+		assertTrue(rCrt.launchRaceAndPrintResult("").equals("La course n'existe pas"));
+	}
+	
+	@Test
+	public void launchRaceAndPrintResultTestWithRaceNameIsNull() {
+		assertTrue(rCrt.launchRaceAndPrintResult(null).equals("La course n'existe pas"));
+	}
+	
+	@Test
+	public void launchRaceAndPrintResultTestWithRaceNotExist() {
+		String raceName = "Course V";
+		Race r = new Race(raceName);
+		String[] listHorse = new String[] {"Pomme","Banane","Poire","Fraise","Framboise","Pêche"};
+		for(String name : listHorse) {
+			r.getHorseList().add(new Horse(name,5));
+		}
+		assertTrue(rCrt.launchRaceAndPrintResult(raceName).equals("La course n'existe pas"));
+	}
+	
+	@Test
+	public void launchRaceAndPrintResultTestWithOnlyFiveHorses() {
+		String raceName = "Course V";
+		Race r = new Race(raceName);
+		String[] listHorse = new String[] {"Pomme","Banane","Fraise","Framboise","Pêche"};
+		for(String name : listHorse) {
+			r.getHorseList().add(new Horse(name,5));
+		}
+		data.getAllRace().add(r);
+		assertTrue(rCrt.launchRaceAndPrintResult(raceName).equals("Il faut 6 chevaux pour lancer la course. Il y en a que "+ r.getHorseList().size()));
+	}
+
 }

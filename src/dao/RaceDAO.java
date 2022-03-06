@@ -98,4 +98,10 @@ public class RaceDAO {
 			return false;
 		}
 	}
+	
+	public boolean raceHasAchievedHorsesMaxCapacity(Race r) {
+		if(r != null && r.getHorseList().size() == 6)
+			return true;
+		return false;
+	}
 }

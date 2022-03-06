@@ -66,7 +66,7 @@ public class RaceController {
 		rDao.addHorseInRace(r, h);
 		return "OK";
 	}
-	
+
 	public String deleteRace(String nameRace) {
 		if(nameRace == null || nameRace.isEmpty())
 			return "Vous n avez pas donne le nom de la course";
@@ -79,6 +79,10 @@ public class RaceController {
 	}
 	
 	public String showInfoRace(String nameRace) {
+		return "KO";
+	}
+	
+	public String launchRaceAndPrintResult(String raceName) {
 		return "KO";
 	}
 }
