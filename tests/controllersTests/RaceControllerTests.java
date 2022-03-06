@@ -253,6 +253,11 @@ public class RaceControllerTests {
 	}
 	
 	@Test
+	public void deleteHorseTestWithRaceNull() {
+		assertTrue(rCrt.deleteRace("Course Prix Toto").equals("La course que vous avez donne n existe pas"));
+	}
+	
+	@Test
 	public void deleteHorseTestWithNameRaceNull() {
 		assertTrue(rCrt.deleteRace(null).equals("Vous n avez pas donne le nom de la course"));
 	}
