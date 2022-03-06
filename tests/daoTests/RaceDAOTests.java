@@ -226,4 +226,27 @@ public class RaceDAOTests {
 		Horse h = new Horse(horseName,3);
 		assertFalse(rDao.deleteHorseInRace(null,h));
 	}
+	
+	// horseWinnerExist tests
+	
+	@Test
+	public void horseWinnerExistTestOK() {
+		String raceName = "Course de la Madeleine";
+		Race r = new Race(raceName);
+		r.setWinner(new Horse("Police",5));
+		assertTrue(rDao.horseWinnerExist(r));
+	}
+	
+	@Test
+	public void horseWinnerExistWithTestRaceNull() {
+		assertFalse(rDao.horseWinnerExist(null));
+	}
+	
+	@Test
+	public void horseWinnerExistWithTestHorseWinnerNull() {
+		String raceName = "Course Prix Villiers-Ragueneau";
+		Race r = new Race(raceName);
+		assertFalse(rDao.horseWinnerExist(r));
+	}
+
 }
