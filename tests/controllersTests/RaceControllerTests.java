@@ -240,7 +240,7 @@ public class RaceControllerTests {
 		String nameRace = "Course Prix Rivoli";
 		Race r = new Race(nameRace);
 		data.getAllRace().add(r);
-		assertTrue(rCrt.deleteRace(nameRace).equals("La course a bien ete supprimee"));
+		assertTrue(rCrt.deleteRace(nameRace).equals("OK"));
 	}
 	
 	@Test
@@ -249,7 +249,7 @@ public class RaceControllerTests {
 		Race r = new Race(nameRace);
 		r.getHorseList().add(new Horse("Fille de beaute", 7));
 		data.getAllRace().add(r);
-		assertTrue(rCrt.deleteRace(nameRace).equals("La course a bien ete supprimee"));
+		assertTrue(rCrt.deleteRace(nameRace).equals("OK"));
 	}
 	
 	@Test

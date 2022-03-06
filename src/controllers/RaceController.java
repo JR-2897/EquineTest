@@ -75,6 +75,6 @@ public class RaceController {
 			return "La course que vous avez donne n existe pas";
 		if(rDao.horseWinnerExist(r))
 			return "Suppresion impossible car la course a un gagnant";
-		return "La course a bien ete supprimee";
+		return "OK";
 	}
 }
