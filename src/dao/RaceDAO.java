@@ -98,4 +98,8 @@ public class RaceDAO {
 			return false;
 		}
 	}
+	
+	public boolean raceHasAchievedHorsesMaxCapacity(Race r) {
+		return false;
+	}
 }

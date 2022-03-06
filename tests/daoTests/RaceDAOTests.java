@@ -249,4 +249,32 @@ public class RaceDAOTests {
 		assertFalse(rDao.horseWinnerExist(r));
 	}
 
+	// raceHasAchievedHorsesMaxCapacity test
+	
+	@Test
+	public void raceHasAchievedHorsesMaxCapacityTestOk() {
+		String raceName = "Course rapide";
+		Race r = new Race(raceName);
+		String[] listHorse = new String[] {"Pomme","Banane","Poire","Fraise","Framboise","Pêche"};
+		for(String name : listHorse) {
+			r.getHorseList().add(new Horse(name,5));
+		}
+		assertTrue(rDao.raceHasAchievedHorsesMaxCapacity(r));
+	}
+	
+	@Test
+	public void raceHasAchievedHorsesMaxCapacityTestWithFiveHorses() {
+		String raceName = "Course rapide";
+		Race r = new Race(raceName);
+		String[] listHorse = new String[] {"Pomme","Banane","Fraise","Framboise","Pêche"};
+		for(String name : listHorse) {
+			r.getHorseList().add(new Horse(name,5));
+		}
+		assertFalse(rDao.raceHasAchievedHorsesMaxCapacity(r));
+	}
+	
+	@Test
+	public void raceHasAchievedHorsesMaxCapacityTestWithRaceNull() {
+		assertFalse(rDao.raceHasAchievedHorsesMaxCapacity(null));
+	}
 }
