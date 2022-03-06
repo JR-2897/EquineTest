@@ -1,5 +1,8 @@
 package dao;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 import models.Data;
@@ -106,6 +109,18 @@ public class RaceDAO {
 	}
 	
 	public List<Race> getAllRaceLaunched(){
-		return null;
+		List<Race> selectionList = new ArrayList<Race>();
+		for(Race r : data.getAllRace())
+			if(r.getWinner()!=null)
+				selectionList.add(r);
+		if(selectionList.size() != 0) {
+			selectionList.sort(new Comparator<Race>() {
+				@Override
+				public int compare(Race r1, Race r2) {
+					return r2.getRaceDate().compareTo(r1.getRaceDate());
+				}
+			});
+		}
+		return selectionList;
 	}
 }

@@ -6,6 +6,7 @@ import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -287,9 +288,17 @@ public class RaceDAOTests {
 		String raceName = "Course V";
 		Race r = new Race(raceName);
 		r.setWinner(new Horse("Pomme",5));
-		r.setRaceDate(LocalDate.now());
+		r.setRaceDate(LocalDate.of(1234, 4, 7));
 		data.getAllRace().add(r);
-		assertNotNull(rDao.getAllRaceLaunched());
+		
+		String raceName1 = "Course A";
+		Race r1 = new Race(raceName1);
+		r1.setWinner(new Horse("Lolo",5));
+		r1.setRaceDate(LocalDate.now());
+		data.getAllRace().add(r1);
+		
+		List<Race> list = rDao.getAllRaceLaunched();
+		assertNotNull(list);
 	}
 	
 	@Test
