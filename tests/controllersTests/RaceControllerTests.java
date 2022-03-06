@@ -2,8 +2,7 @@ package controllersTests;
 
 import static org.junit.Assert.assertTrue;
 
-import java.lang.reflect.Array;
-import java.util.List;
+import java.time.LocalDate;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -351,5 +350,22 @@ public class RaceControllerTests {
 		r.setWinner(new Horse("Pomme",5));
 		data.getAllRace().add(r);
 		assertTrue(rCrt.launchRaceAndPrintResult(raceName).equals("La course a déjà été lancé, elle ne peut pas être relancé"));
+	}
+	
+	// printLast10RacesLaunched tests
+	
+	@Test
+	public void printLast10RacesLaunchedTestOk() {
+		String raceName = "Course V";
+		Race r = new Race(raceName);
+		r.setWinner(new Horse("Pomme",5));
+		r.setRaceDate(LocalDate.now());
+		data.getAllRace().add(r);
+		assertTrue(rCrt.printLast10RacesLaunched().equals("Ok"));
+	}
+	
+	@Test
+	public void printLast10RacesLaunchedTestWithNeitherRaceLaunched() {
+		assertTrue(rCrt.printLast10RacesLaunched().equals("Ok"));
 	}
 }
