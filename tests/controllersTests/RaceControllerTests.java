@@ -2,6 +2,9 @@ package controllersTests;
 
 import static org.junit.Assert.assertTrue;
 
+import java.lang.reflect.Array;
+import java.util.List;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -215,6 +218,19 @@ public class RaceControllerTests {
 		String horseName = null;
 		Race r = new Race("Course V");
 		assertTrue(rCrt.addHorseInRace(r, horseName).equals("Ce cheval n'existe pas"));
+	}
+	
+	@Test
+	public void addHorseInRaceTestWithAdd7thHorseInRace() {
+		String horseName = "Tonnerre";
+		Horse h = new Horse(horseName,3);
+		data.getAllHorse().add(h);
+		Race r = new Race("Course V");
+		String[] listHorse = new String[] {"Pomme","Banane","Poire","Fraise","Framboise","Pêche"};
+		for(String name : listHorse) {
+			r.getHorseList().add(new Horse(name,5));
+		}
+		assertTrue(rCrt.addHorseInRace(r, horseName).equals("La course a déjà atteint son nombre maximum de chevaux"));
 	}
 	
 }

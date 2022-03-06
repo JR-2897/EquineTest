@@ -61,6 +61,8 @@ public class RaceController {
 			return "Ce cheval n'existe pas";
 		if(rDao.getHorseInRaceByHorseName(r, nameHorse)!=null)
 			return "Ce cheval existe déjà dans la course";
+		if(r.getHorseList().size() >= 6)
+			return "La course a déjà atteint son nombre maximum de chevaux";
 		rDao.addHorseInRace(r, h);
 		return "OK";
 	}
