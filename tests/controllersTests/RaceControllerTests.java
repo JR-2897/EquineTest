@@ -233,6 +233,50 @@ public class RaceControllerTests {
 		assertTrue(rCrt.addHorseInRace(r, horseName).equals("La course a déjà atteint son nombre maximum de chevaux"));
 	}
 	
+	//  deleteRace tests
+	
+	@Test
+	public void deleteRaceTestOkWithinHorseInRace() {
+		String nameRace = "Course Prix Rivoli";
+		Race r = new Race(nameRace);
+		data.getAllRace().add(r);
+		assertTrue(rCrt.deleteRace(nameRace).equals("OK"));
+	}
+	
+	@Test
+	public void deleteRaceTestOkWithHorseInRace() {
+		String nameRace = "Course Prix Rivoli";
+		Race r = new Race(nameRace);
+		r.getHorseList().add(new Horse("Fille de beaute", 7));
+		data.getAllRace().add(r);
+		assertTrue(rCrt.deleteRace(nameRace).equals("OK"));
+	}
+	
+	@Test
+	public void deleteRaceTestWithRaceNull() {
+		assertTrue(rCrt.deleteRace("Course Prix Toto").equals("La course que vous avez donne n existe pas"));
+	}
+	
+	@Test
+	public void deleteRaceTestWithNameRaceNull() {
+		assertTrue(rCrt.deleteRace(null).equals("Vous n avez pas donne le nom de la course"));
+	}
+	
+	@Test
+	public void deleteRaceTestWithNameRaceEmpty() {
+		assertTrue(rCrt.deleteRace("").equals("Vous n avez pas donne le nom de la course"));
+	}
+	
+	@Test
+	public void deleteRaceTestWithHorseWinner() {
+		String nameRace = "Course Prix Rivoli";
+		Race r = new Race(nameRace);
+		r.setWinner(new Horse("Fille de beaute", 7));
+		data.getAllRace().add(r);
+		assertTrue(rCrt.deleteRace(nameRace).equals("Suppresion impossible car la course a un gagnant"));
+
+	}
+	
 	// launchRaceAndPrintResult tests
 	
 	@Test

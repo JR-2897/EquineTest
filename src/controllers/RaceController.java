@@ -66,8 +66,18 @@ public class RaceController {
 		rDao.addHorseInRace(r, h);
 		return "OK";
 	}
+
+	public String deleteRace(String nameRace) {
+		if(nameRace == null || nameRace.isEmpty())
+			return "Vous n avez pas donne le nom de la course";
+		Race r = rDao.getRaceByName(nameRace);
+		if(r == null)
+			return "La course que vous avez donne n existe pas";
+		if(rDao.horseWinnerExist(r))
+			return "Suppresion impossible car la course a un gagnant";
+		return "OK";
+	}
 	
 	public String launchRaceAndPrintResult(String raceName) {
 		return "KO";
-	}
 }
