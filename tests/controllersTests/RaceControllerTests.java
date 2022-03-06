@@ -236,7 +236,7 @@ public class RaceControllerTests {
 	//  deleteRace tests
 	
 	@Test
-	public void deleteHorseTestOkWithinHorseInRace() {
+	public void deleteRaceTestOkWithinHorseInRace() {
 		String nameRace = "Course Prix Rivoli";
 		Race r = new Race(nameRace);
 		data.getAllRace().add(r);
@@ -244,7 +244,7 @@ public class RaceControllerTests {
 	}
 	
 	@Test
-	public void deleteHorseTestOkWithHorseInRace() {
+	public void deleteRaceTestOkWithHorseInRace() {
 		String nameRace = "Course Prix Rivoli";
 		Race r = new Race(nameRace);
 		r.getHorseList().add(new Horse("Fille de beaute", 7));
@@ -253,22 +253,22 @@ public class RaceControllerTests {
 	}
 	
 	@Test
-	public void deleteHorseTestWithRaceNull() {
+	public void deleteRaceTestWithRaceNull() {
 		assertTrue(rCrt.deleteRace("Course Prix Toto").equals("La course que vous avez donne n existe pas"));
 	}
 	
 	@Test
-	public void deleteHorseTestWithNameRaceNull() {
+	public void deleteRaceTestWithNameRaceNull() {
 		assertTrue(rCrt.deleteRace(null).equals("Vous n avez pas donne le nom de la course"));
 	}
 	
 	@Test
-	public void deleteHorseTestWithNameRaceEmpty() {
+	public void deleteRaceTestWithNameRaceEmpty() {
 		assertTrue(rCrt.deleteRace("").equals("Vous n avez pas donne le nom de la course"));
 	}
 	
 	@Test
-	public void deleteHorseTestWithHorseWinner() {
+	public void deleteRaceTestWithHorseWinner() {
 		String nameRace = "Course Prix Rivoli";
 		Race r = new Race(nameRace);
 		r.setWinner(new Horse("Fille de beaute", 7));
