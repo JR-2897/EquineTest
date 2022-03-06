@@ -87,4 +87,8 @@ public class RaceDAO {
 			return false;
 		}
 	}
+	
+	public boolean horseWinnerExist(Race r) {
+		return false;
+	}
 }
