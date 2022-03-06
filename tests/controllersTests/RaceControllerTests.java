@@ -217,4 +217,42 @@ public class RaceControllerTests {
 		assertTrue(rCrt.addHorseInRace(r, horseName).equals("Ce cheval n'existe pas"));
 	}
 	
+	//  deleteRace tests
+	
+	@Test
+	public void deleteHorseTestOkWithinHorseInRace() {
+		String nameRace = "Course Prix Rivoli";
+		Race r = new Race(nameRace);
+		data.getAllRace().add(r);
+		assertTrue(rCrt.deleteRace(nameRace).equals("La course a bien ete supprimee"));
+	}
+	
+	@Test
+	public void deleteHorseTestOkWithHorseInRace() {
+		String nameRace = "Course Prix Rivoli";
+		Race r = new Race(nameRace);
+		r.getHorseList().add(new Horse("Fille de beaute", 7));
+		data.getAllRace().add(r);
+		assertTrue(rCrt.deleteRace(nameRace).equals("La course a bien ete supprimee"));
+	}
+	
+	@Test
+	public void deleteHorseTestWithNameRaceNull() {
+		assertTrue(rCrt.deleteRace(null).equals("Vous n avez pas donne le nom de la course"));
+	}
+	
+	@Test
+	public void deleteHorseTestWithNameRaceEmpty() {
+		assertTrue(rCrt.deleteRace("").equals("Vous n avez pas donne le nom de la course"));
+	}
+	
+	@Test
+	public void deleteHorseTestWithHorseWinner() {
+		String nameRace = "Course Prix Rivoli";
+		Race r = new Race(nameRace);
+		r.setWinner(new Horse("Fille de beaute", 7));
+		data.getAllRace().add(r);
+		assertTrue(rCrt.deleteRace(nameRace).equals("Suppresion impossible car la course a un gagnant"));
+	}
+	
 }

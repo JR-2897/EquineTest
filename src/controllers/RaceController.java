@@ -64,4 +64,8 @@ public class RaceController {
 		rDao.addHorseInRace(r, h);
 		return "OK";
 	}
+	
+	public String deleteRace(String nameRace) {
+		return "KO";
+	}
 }
