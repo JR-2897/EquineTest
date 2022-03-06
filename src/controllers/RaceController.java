@@ -134,4 +134,8 @@ public class RaceController {
 		}
 		return h;
 	}
+	
+	public String printLast10RacesLaunched() {
+		return "KO";
+	}
 }
