@@ -2,6 +2,7 @@ package views;
 
 import controllers.HorseController;
 import controllers.RaceController;
+import dao.RaceDAO;
 import models.Racetrack;
 import utils.Util;
 
@@ -28,13 +29,6 @@ public class Menu {
 		System.out.println("8 Afficher les informations d une course");
 		System.out.println("9 Afficher les informations d un cheval");
 		System.out.println("10 Ajouter des chevaux a une course");
-		/*
-		 * TODO 
-		 * 1) Afficher la liste de tous les chevaux 
-		 * 2) 2 proposition : 
-		 * 		a) Ajouter cheval 
-		 * 		b) Retour menu principale
-		 */
 		System.out.println("11 Lancement d une course et affichage de son resultat");
 		System.out.println("12 Afficher les dix dernieres courses lancees");
 		System.out.println("---------------------------------------------------------------");
@@ -69,17 +63,20 @@ public class Menu {
 			waitBeforeComebackMenu();
 			break;
 		case "8":
-			System.out.println("N est pas encore implente");
+			partMenuPrintInfosRace();
+			waitBeforeComebackMenu();
 			break;
 		case "9":
 			partMenuPrintInfosHorse();
 			waitBeforeComebackMenu();
 			break;
 		case "10":
-			System.out.println("N est pas encore implente");
+			partMenuAddHorseInRace();
+			waitBeforeComebackMenu();
 			break;
 		case "11":
-			System.out.println("N est pas encore implente");
+			partMenuLaunchRaceAndPrintResult();
+			waitBeforeComebackMenu();
 			break;
 		case "12":
 			System.out.println("N est pas encore implente");
@@ -183,6 +180,17 @@ public class Menu {
 			System.out.println("Le cheval a bien ete supprime");
 	}
 	
+	private void partMenuPrintInfosRace() {
+		partMenuPrintAllRaces();
+		System.out.println("---------------------------------------------------------------");
+		System.out.println("Quel est la course dont vous voulez les informations ?");
+		String nameRaceGetInfos = Util.saisieString();
+		System.out.println("---------------------------------------------------------------");
+		String msgShowRaceInfos = rController.showInfoRace(nameRaceGetInfos);
+		if(!msgShowRaceInfos.equals("OK"))
+			System.out.println(msgShowRaceInfos);
+	}
+	
 	private void partMenuPrintInfosHorse() {
 		partMenuPrintAllHorses();
 		System.out.println("---------------------------------------------------------------");
@@ -192,5 +200,44 @@ public class Menu {
 		String msgShowHorseInfos = hController.showInfoHorse(nameHorseGetInfos);
 		if(!msgShowHorseInfos.equals("OK"))
 			System.out.println(msgShowHorseInfos);
+	}
+	
+	private void partMenuAddHorseInRace() {
+		System.out.println("---------------------------------------------------------------");
+		System.out.println("Vous pouvez :");
+		System.out.println("1 Ajouter un cheval");
+		System.out.println("2 Retourner au menu");
+		System.out.println("---------------------------------------------------------------");
+		String choice = Util.saisieString();
+		System.out.println("---------------------------------------------------------------");
+		
+		if(choice.matches("1")) {
+			partMenuPrintAllRaces();
+			System.out.println("Quel est la course où vous voulez ajouter un cheval ?");
+			System.out.println("---------------------------------------------------------------");
+			String nameRace = Util.saisieString();
+			System.out.println("---------------------------------------------------------------");
+			partMenuPrintAllHorses();
+			System.out.println("---------------------------------------------------------------");
+			System.out.println("Quel est le cheval que vous voulez ajouter ?");
+			System.out.println("---------------------------------------------------------------");
+			String nameHorse = Util.saisieString();
+			String msgHorseInRace = rController.addHorseInRace(nameRace, nameHorse);
+			if(!msgHorseInRace.equals("OK"))
+				System.out.println(msgHorseInRace);
+		}
+		else
+			waitBeforeComebackMenu();
+	}
+	
+	private void partMenuLaunchRaceAndPrintResult() {
+		partMenuPrintAllRaces();
+		System.out.println("---------------------------------------------------------------");
+		System.out.println("Quel est la course que vous voulez lancer ?");
+		String nameRacetoLunch = Util.saisieString();
+		System.out.println("---------------------------------------------------------------");
+		String msgLaunchRaceAndPrintResult = rController.launchRaceAndPrintResult(nameRacetoLunch);
+		if(!msgLaunchRaceAndPrintResult.equals("OK"))
+			System.out.println(msgLaunchRaceAndPrintResult);
 	}
 }
