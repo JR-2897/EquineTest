@@ -175,8 +175,10 @@ public class RaceControllerTests {
 		String horseName = "Tonnerre";
 		Horse h = new Horse(horseName,3);
 		data.getAllHorse().add(h);
-		Race r = new Race("Course V");
-		assertTrue(rCrt.addHorseInRace(r, horseName).equals("OK"));
+		String raceName = "Course V";
+		Race r = new Race(raceName);
+		data.getAllRace().add(r);
+		assertTrue(rCrt.addHorseInRace(raceName, horseName).equals("OK"));
 	}
 	
 	@Test
@@ -184,8 +186,10 @@ public class RaceControllerTests {
 		String horseName = "Tonnerre";
 		Horse h = new Horse("Eclair",3);
 		data.getAllHorse().add(h);
-		Race r = new Race("Course V");
-		assertTrue(rCrt.addHorseInRace(r, horseName).equals("Ce cheval n'existe pas"));
+		String raceName = "Course V";
+		Race r = new Race(raceName);
+		data.getAllRace().add(r);
+		assertTrue(rCrt.addHorseInRace(raceName, horseName).equals("Ce cheval n'existe pas"));
 	}
 	
 	@Test
@@ -193,31 +197,45 @@ public class RaceControllerTests {
 		String horseName = "Tonnerre";
 		Horse h = new Horse(horseName,3);
 		data.getAllHorse().add(h);
-		Race r = new Race("Course V");
+		String raceName = "Course V";
+		Race r = new Race(raceName);
 		r.getHorseList().add(h);
-		assertTrue(rCrt.addHorseInRace(r, horseName).equals("Ce cheval existe déjà dans la course"));
+		data.getAllRace().add(r);
+		assertTrue(rCrt.addHorseInRace(raceName, horseName).equals("Ce cheval existe déjà dans la course"));
 	}
 	
 	@Test
-	public void addHorseInRaceTestRaceIsNull() {
+	public void addHorseInRaceTestRaceNameIsNull() {
 		String horseName = "Tonnerre";
 		Horse h = new Horse(horseName,3);
 		data.getAllHorse().add(h);
-		assertTrue(rCrt.addHorseInRace(null, horseName).equals("La course n'est pas bonne"));
+		assertTrue(rCrt.addHorseInRace(null, horseName).equals("La course n existe pas"));
+	}
+	
+	@Test
+	public void addHorseInRaceTestRaceNameIsEmpty() {
+		String horseName = "Tonnerre";
+		Horse h = new Horse(horseName,3);
+		data.getAllHorse().add(h);
+		assertTrue(rCrt.addHorseInRace("", horseName).equals("La course n existe pas"));
 	}
 	
 	@Test
 	public void addHorseInRaceTestHorseNameIsEmpty() {
 		String horseName = "";
-		Race r = new Race("Course V");
-		assertTrue(rCrt.addHorseInRace(r, horseName).equals("Ce cheval n'existe pas"));
+		String raceName = "Course V";
+		Race r = new Race(raceName);
+		data.getAllRace().add(r);
+		assertTrue(rCrt.addHorseInRace(raceName, horseName).equals("Ce cheval n'existe pas"));
 	}
 	
 	@Test
 	public void addHorseInRaceTestHorseNameIsNull() {
 		String horseName = null;
-		Race r = new Race("Course V");
-		assertTrue(rCrt.addHorseInRace(r, horseName).equals("Ce cheval n'existe pas"));
+		String raceName = "Course V";
+		Race r = new Race(raceName);
+		data.getAllRace().add(r);
+		assertTrue(rCrt.addHorseInRace(raceName, horseName).equals("Ce cheval n'existe pas"));
 	}
 	
 	@Test
@@ -225,12 +243,14 @@ public class RaceControllerTests {
 		String horseName = "Tonnerre";
 		Horse h = new Horse(horseName,3);
 		data.getAllHorse().add(h);
-		Race r = new Race("Course V");
+		String raceName = "Course V";
+		Race r = new Race(raceName);
 		String[] listHorse = new String[] {"Pomme","Banane","Poire","Fraise","Framboise","Pêche"};
 		for(String name : listHorse) {
 			r.getHorseList().add(new Horse(name,5));
 		}
-		assertTrue(rCrt.addHorseInRace(r, horseName).equals("La course a déjà atteint son nombre maximum de chevaux"));
+		data.getAllRace().add(r);
+		assertTrue(rCrt.addHorseInRace(raceName, horseName).equals("La course a déjà atteint son nombre maximum de chevaux"));
 	}
 	
 	//  deleteRace tests
