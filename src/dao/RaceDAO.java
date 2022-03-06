@@ -104,4 +104,8 @@ public class RaceDAO {
 			return true;
 		return false;
 	}
+	
+	public List<Race> getAllRaceLaunched(){
+		return null;
+	}
 }

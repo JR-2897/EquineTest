@@ -5,6 +5,8 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
+import java.time.LocalDate;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -276,5 +278,22 @@ public class RaceDAOTests {
 	@Test
 	public void raceHasAchievedHorsesMaxCapacityTestWithRaceNull() {
 		assertFalse(rDao.raceHasAchievedHorsesMaxCapacity(null));
+	}
+	
+	// getAllRaceLaunched tests
+	
+	@Test
+	public void getAllRaceLaunchedTestOk() {
+		String raceName = "Course V";
+		Race r = new Race(raceName);
+		r.setWinner(new Horse("Pomme",5));
+		r.setRaceDate(LocalDate.now());
+		data.getAllRace().add(r);
+		assertNotNull(rDao.getAllRaceLaunched());
+	}
+	
+	@Test
+	public void getAllRaceLaunchedTestWithNeitherRaceLaunched() {
+		assertNotNull(rDao.getAllRaceLaunched());
 	}
 }
