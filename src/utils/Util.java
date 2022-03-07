@@ -11,8 +11,12 @@ public class Util {
 	}
 	
 	public static int saisieInt() {
-		Scanner sc = new Scanner(System.in);
-		return sc.nextInt();
+		try {
+			Scanner sc = new Scanner(System.in);
+			return sc.nextInt();
+		}catch(Exception ex) {
+			return -1;
+		}
 	}
 	
 	public static int randomInt(int min,int max) {
